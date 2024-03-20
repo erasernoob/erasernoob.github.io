@@ -11,34 +11,34 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - John Doe</title>
+  <title>VIMMIV</title>
   
-  <link rel="canonical" href="https://erasernoob.github.io/archives/2024/">
+  <link rel="canonical" href="https://erasernoob.github.io/2024/03/19/VIMMIV/">
   
-  <meta name="description" content="">
+  <meta name="description" content="VIM大大的三个字，折腾了我有两三天的样子。从该开始了解这个东西后的热情澎湃，再到看了MIT the missing -semester这门课程时真正了解了她的用法和模式后，热情更加蓬勃，想要把玩这个东西的心情到达了巅峰。可事实并不是全是这样。在近现代的课上看完了vim的那节课，胸有成竹的风风光光的">
   
   
   <meta name="author" content="John Doe">
   
-  <meta property="og:image" content="https://erasernoob.github.io/images/thumbnail.jpg">
+  <meta property="og:image" content="https://erasernoob.github.ioundefined">
   
   <meta property="og:site_name" content="erasernoob 的个人博客" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - John Doe" />
+  <meta property="og:title" content="VIMMIV" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="VIM大大的三个字，折腾了我有两三天的样子。从该开始了解这个东西后的热情澎湃，再到看了MIT the missing -semester这门课程时真正了解了她的用法和模式后，热情更加蓬勃，想要把玩这个东西的心情到达了巅峰。可事实并不是全是这样。在近现代的课上看完了vim的那节课，胸有成竹的风风光光的">
   
-  <meta property="og:url" content="https://erasernoob.github.io/archives/2024/" />
+  <meta property="og:url" content="https://erasernoob.github.io/2024/03/19/VIMMIV/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - John Doe">
+  <meta name="twitter:title" content="VIMMIV">
   
-  <meta name="twitter:description" content="">
+  <meta name="twitter:description" content="VIM大大的三个字，折腾了我有两三天的样子。从该开始了解这个东西后的热情澎湃，再到看了MIT the missing -semester这门课程时真正了解了她的用法和模式后，热情更加蓬勃，想要把玩这个东西的心情到达了巅峰。可事实并不是全是这样。在近现代的课上看完了vim的那节课，胸有成竹的风风光光的">
   
   
-  <meta name="twitter:image" content="https://erasernoob.github.io/images/thumbnail.jpg">
+  <meta name="twitter:image" content="https://erasernoob.github.ioundefined">
   
-  <meta name="twitter:url" content="https://erasernoob.github.io/archives/2024/" />
+  <meta name="twitter:url" content="https://erasernoob.github.io/2024/03/19/VIMMIV/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -189,128 +189,38 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>VIMMIV</h2>
 
+  <h1 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h1><p>大大的三个字，折腾了我有两三天的样子。从该开始了解这个东西后的热情澎湃，再到看了MIT <strong>the missing -semester</strong>这门课程时真正了解了她的用法和模式后，热情更加蓬勃，想要把玩这个东西的心情到达了巅峰。可事实并不是全是这样。在近现代的课上看完了vim的那节课，胸有成竹的风风光光的回到寝室打开电脑。想要一探究竟。</p>
+<p>然而等待着我的却是：</p>
+<ul>
+<li><p>和我想象中完全不一样的GUI。</p>
+</li>
+<li><p>糟糕的写代码体验。不能自动打开大括号（这也是非常让我不爽的一点）</p>
+</li>
+<li><p>不能很快的适应这样的键位，特别是I和A这两种模式，一个是INSERT，另一个是APPEND。我真的不能很好的分清这两种的用法，我想是还没有形成肌肉记忆吧。</p>
+</li>
+<li><p>各种模式下的胡乱按错，手忙脚乱。</p>
+<p>这一切的一切都是我今晚在经历了漫长的找别人的配置文件，复制粘贴拿来主义，研究powershell和vim之间的关系，研究插件的安装和配置。纠结用哪一个插件管理工具。VUNDLE还是VIM-PLUG事实却是VUNDLE根本不能成功的装好插件，看见他们说vundle已经被淘汰了，转而又转向vim-plug但事实又是vim-plug根本不能好好的安装进vim中，（反而进入了一个程度更加低级的怪圈中）。</p>
+<p>当然步骤是这样的：</p>
+<p><code>mkdir ~\.vim\autoload </code></p>
+<p>在.vim文件夹下新建一个autoload文件夹，旨在在vim启动之时预加载里面的东西，之后将plug.vim文件放进文件夹中，意旨这样就把plug-vim安装好了，理论是这样，我的事实却是到今晚我也没正常检测到vim-plug已经安装好了在我的vim里。</p>
+<p><code>:PlugInstall 安装插件 ：PlugStatus 检查插件的状态</code></p>
+<p>当然没有安装好vim-plug根本就不会识别这个正确指令，只会报错。</p>
+<p>现在的状态就是，在我终于放弃了继续配置vim的界面和安装插件方面后，体验了将近十几分钟用vim写PTA后。退堂鼓打响了，确实开头使用真的很折磨人。和我刚开始想的能用在键盘正中央的键上下移动光标而不用去敲方向键和去动鼠标的爽感，有点太大差距了。这个明显优点好像盖不住刚开始上手vim的那些各种缺点，好像大家都在说真正上手了以后，可以做到思考和写同时进行，真正的同步了的那种心流状态，我想可能是和我现在写这篇文章的状态差不多。</p>
+<p>好吧，这就是我的vim初体验。有点小难受。当然来写这个不是为了抱怨啥的，得把这里面提到的东西，一个个立个flag。</p>
+<ul>
+<li>要继续使用vim写代码，你现在想去vscode折腾vim插件的想法，现在不可行，至少要在vim上花上个二十个小时再来将这个想法付诸行动吧（Aish说的）。</li>
+<li>然后就是配GUI。。配成我自己满意的那个bash和vim的界面。</li>
+<li>各种键位的使用，在使用中记住。</li>
+</ul>
+<p>最后就是思想上的问题，现在我已经明确了，不能只看到现在的问题，我的思想上正在被那些应该把注意力专注于知识而而不是工具的观点拉扯。</p>
+<p>在这上面花时间一定是有未来意义的。现在的我决定 支援未来！（doge）</p>
+</li>
+</ul>
 
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 19, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/03/19/VIMMIV/" class="">
-            
-              VIMMIV
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 9, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/03/09/2024%E5%B9%B43%E6%9C%889%E6%97%A5%E5%8D%88%E5%90%8E/" class="">
-            
-              2024年3月9日午后
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Feb 29, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/02/29/%E4%BA%8E%E5%B9%B4%E7%A6%BB%E5%8E%BB%EF%BC%8C%E4%BA%8E%E7%83%9F%E8%8A%B1%E6%9E%AF%E8%90%8E/" class="">
-            
-              于年离去，于烟花枯萎
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 15, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/15/2024%E5%B9%B4%E5%AF%92%E5%81%87%E5%B1%95/" class="">
-            
-              2024年寒假展
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 11, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/11/%E8%BF%91%E6%9C%9F%E6%83%B3%E7%9A%84%E5%92%8C%E5%AD%A6%E7%9A%84/" class="">
-            
-              近期想的和学的
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 9, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/09/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8A%98%E8%85%BE%E9%A6%96%E6%AC%A1%E8%AE%B0%E5%BD%95/" class="">
-            
-              首次搭建博客网站记录
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 8, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/08/%E5%88%AB%E7%82%B9%E5%88%AB%E7%82%B9%EF%BC%8C%E7%82%B9%E4%BA%86%E4%BC%9A%E5%87%BA%E5%A4%A7%E9%97%AE%E9%A2%98%E7%9A%84%EF%BC%81%EF%BC%81%EF%BC%81/" class="">
-            
-              别点别点，点了会出大问题的！！！
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-  </ul>
-</div>
+  <p><a class="classtest-link" href="/tags/%E6%8A%98%E8%85%BE/" rel="tag">折腾</a> — Mar 19, 2024</p>
+  
 
 
           <div class="row mt-2">
