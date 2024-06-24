@@ -1,37 +1,329 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
 
-{% block page_class %}page-post-detail{% endblock %}
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
 
+  
+  <title>2024春13周</title>
+  
+  <link rel="canonical" href="https://erasernoob.github.io/2024/06/04/2024%E6%98%A513%E5%91%A8/">
+  
+  <meta name="description" content="前记很早就想着手开始记录，写自己的学习记录，和知识性质的总结。最近有想到，索性就把这个时间间隔节点给定在了一周一次吧，一周的时间还是挺重要挺多的，一周着实是占到了一年的2%。先开的这个专栏主要是，记录自己在自学CS的途中，大步向前走的步伐。最近可能就是包括，CSAPP这一个超大头的学习。希望能坚持下">
+  
+  
+  <meta name="author" content="John Doe">
+  
+  <meta property="og:image" content="https://erasernoob.github.ioundefined">
+  
+  <meta property="og:site_name" content="erasernoob 的个人博客" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="2024春13周" />
+  
+  <meta property="og:description" content="前记很早就想着手开始记录，写自己的学习记录，和知识性质的总结。最近有想到，索性就把这个时间间隔节点给定在了一周一次吧，一周的时间还是挺重要挺多的，一周着实是占到了一年的2%。先开的这个专栏主要是，记录自己在自学CS的途中，大步向前走的步伐。最近可能就是包括，CSAPP这一个超大头的学习。希望能坚持下">
+  
+  <meta property="og:url" content="https://erasernoob.github.io/2024/06/04/2024%E6%98%A513%E5%91%A8/" />
 
-{% block content %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2024春13周">
+  
+  <meta name="twitter:description" content="前记很早就想着手开始记录，写自己的学习记录，和知识性质的总结。最近有想到，索性就把这个时间间隔节点给定在了一周一次吧，一周的时间还是挺重要挺多的，一周着实是占到了一年的2%。先开的这个专栏主要是，记录自己在自学CS的途中，大步向前走的步伐。最近可能就是包括，CSAPP这一个超大头的学习。希望能坚持下">
+  
+  
+  <meta name="twitter:image" content="https://erasernoob.github.ioundefined">
+  
+  <meta name="twitter:url" content="https://erasernoob.github.io/2024/06/04/2024%E6%98%A513%E5%91%A8/" />
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
-    </div>
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="../fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+  
+<link rel="stylesheet" href="/css/user.css">
+
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 8px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
   </div>
 
-{% endblock %}
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      小块荒自留地
+    </h1>
+  </div>
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/Works" class="ml">Works</a>
+          
+        
+          
+          <a href="/./HTML/FireWorks/index.html" class="ml">About</a>
+          
+        
+        
+          
+            <a href="mailto:erasernoob@outlook.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+        <div class="trans">
+            <h2>2024春13周</h2>
+
+  <h3 id="前记"><a href="#前记" class="headerlink" title="前记"></a>前记</h3><p>很早就想着手开始记录，写自己的学习记录，和知识性质的总结。最近有想到，索性就把这个时间间隔节点给定在了一周一次吧，一周的时间还是挺重要挺多的，一周着实是占到了一年的2%。先开的这个专栏主要是，记录自己在自学CS的途中，大步向前走的步伐。最近可能就是包括，CSAPP这一个超大头的学习。希望能坚持下去这个习惯，这是一个正反馈的，送给自己的一份财富。</p>
+<h4 id="CSAPP"><a href="#CSAPP" class="headerlink" title="CSAPP"></a>CSAPP</h4><p>这一周加上上一周，还是没有忍住开了CSAPP这个大坑，说好的先把CS106x课程给结束，在开始进入这个大坑的呢。还是这样双头并行式进行运作吧。CS106x也是快完结了。</p>
+<p>​	上一周主要是以第二章的内容居多。</p>
+<h5 id="第二章-信息的表示和处理"><a href="#第二章-信息的表示和处理" class="headerlink" title="第二章 信息的表示和处理"></a>第二章 信息的表示和处理</h5><p><strong>总结核心：所有数字在整数形式方面在计算机中都是通过二进制位串来进行表示的，只是为表示不同的数字，而存在的不同的解读方式。特别是二进制位串的符号位，也就是二进制位向量的最高有效位，是区分无符号整数和补码整数表示（通俗的说其实就是有了符号的整数）的有具体标志。而浮点数的表示，则是通过特殊的科学计数法的形式进行表示。</strong> <strong>整章都需要有类比十进制的思维</strong>。</p>
+<p><strong>第二章主要讲的是信息的表示和处理，总的来说，讲了最重要的三种在计算机中的数字表示：</strong></p>
+<p><strong>无符号编码：</strong>无符号编码主要是传统的二进制表示法表示大于或等于的零的数字。</p>
+<p><strong>补码编码</strong>：二进制的首位，以1或0来表示数的正负。</p>
+<p><strong>浮点数编码</strong>：以特殊的以2为基数的科学计数法来表示的编码方法。</p>
+<p><strong>前瞻知识</strong></p>
+<ul>
+<li>计算机使用8位的块，称为字节，来作为最小的可寻址的内存单位。<strong>虚拟地址空间</strong></li>
+<li>十六进制的表示法，掌握了十六进制，十进制和二进制之间的熟练转换。</li>
+<li>word size(字长)， 每个计算机都有一个字长，决定了系统的虚拟地址空间的最大大小，字长2^w位，虚拟地址的范围0~2^w-1位，程序最多访问2^w字节。</li>
+<li>在计算机中排列一个对象的两个字节的通用规则：<strong>小端法和大端法</strong>。而这通常依赖于机器的类型。<ul>
+<li><strong>小端法</strong>：最低有效位字节储存在字节数组前面。</li>
+<li><strong>大端法</strong>：最高有效位字节储存在字节数组前面。</li>
+</ul>
+</li>
+<li>位串的位级别的运算、<strong>算术右移</strong>、<strong>逻辑右移</strong>、<strong>左移运算</strong>。</li>
+</ul>
+<p><strong>整数的运算</strong></p>
+<ul>
+<li><p>二进制位串的每一位都有权重，类比于十进制数字的表示方法。同时补码编码的首位权重依然存在，只不过是带上了负号进行运算。</p>
+</li>
+<li><p>既然存在固定的位数来表示数字，那么就一定存在位数不够的情况。这样就导致了<strong>溢出</strong>。</p>
+<ul>
+<li>数字从一种数据类型到另一种数据类型，发生的溢出是，位向量解释差异的后果，或者说从一个大的数据类型转换到小的数据类型必然存在位数不够的情况，这时就会发生<strong>截断位数</strong><ul>
+<li><strong>截断位数</strong>：指的是取得末尾的w位数字，丢弃前面的超出w位的数字来表示运算结果的方法。通常通过取模运算来进行（类比十进制取末位数）    x’ &#x3D; x mod 2^w。截断位数，在整数的乘法中依然存在。</li>
+</ul>
+</li>
+<li>同样的，溢出当然发生在运算之中，这就是为什么一个正数经过运算之后会变成一个很小的负数。<strong>由补码编码的-1，转换为无符号整数便是最大的UMax</strong>。</li>
+</ul>
+</li>
+<li><p>计算机中的运行乘法的效率远比进行加减法运算低，所以计算机更加倾向于将乘法运算转换为移位和加法减法的组合来消除很多整数乘以常数的情况。</p>
+<blockquote>
+<p>x * 14 &#x3D; (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x&lt;&lt;1)</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>浮点数的表示方法</strong></p>
+<blockquote>
+<p>浮点数对形如 V&#x3D;   x*2^y 的有理数进行编码</p>
+</blockquote>
+<p><strong>主要形式</strong>：IEEE的浮点标准</p>
+<blockquote>
+<p>V &#x3D; (-1)^s * M * 2^E</p>
+</blockquote>
+<p>其中s决定该浮点数是正数还是负数，M是尾数（具体的值视情况而定），E是阶码。</p>
+<p><strong>浮点数位表示分为三个字段</strong>：</p>
+<ul>
+<li>一个单独的符号位直接编码符号s。</li>
+<li>紧跟着的是k位的阶码字段exp，编码阶码E。</li>
+<li>n位的小数字段frac代表的是小数f，编码尾数M。</li>
+</ul>
+<p><strong>具体的运算则根据exp的值</strong>，被编码的值分为三种不同的情况，最后一种情况有两种变体。</p>
+<ul>
+<li>规格化的 (exp !&#x3D; 0)</li>
+<li>非规格化的(exp &#x3D;0)</li>
+<li>无穷大(exp &#x3D; max &amp;&amp; frac &#x3D; 0)</li>
+<li>NaN (<em><strong>Not a Number</strong></em>)(exp &#x3D; max &amp;&amp; frac !&#x3D; 0)</li>
+</ul>
+<p>至此这周的CSAPP就完成了，课后的家庭作业做的我很抓狂。这一章刚开始也是我最抗拒的一张，现在梳理了一下确实好了很多，但家庭作业中一些技巧和具体的实现，还是比较困难。有时间再来继续补充吧。</p>
+<hr>
+<h4 id="cs106x"><a href="#cs106x" class="headerlink" title="cs106x"></a>cs106x</h4><p>这一周，终于完成了boggle的作业，一直以为是其中的回溯算法问题，从上上周的周末一直拉到了上周的周末（好像是）才最终发现，问题出在了把初始化一个Lexicon的任务放在了一个，函数中，导致每一次要进行判断单词的时候，多次调用这个函数，初始化这个lexicon，时间耗费过于庞大，导致没有完成。也算是踩到了一个坑吧。</p>
+<p>进度方面，由于一些畏惧，或者说是冠冕堂皇的理由，我跳过了<em>assignment 4 ADTs and recursion</em>，因为这个确实是我的弱项，如果专注这个的话，估计又要耗费大量时间，总的来说上一周的主题就是回溯，完成了Hello算法题单里的回溯题，当然大部分时间都是在看题解，理解题解，背题解（），每周一到两个的算法题目标，也算是完成了，这次就不写<strong>算法</strong>专栏了。</p>
+<p>然后我是突然发现，原来cs106x后面的课程，才开始讲数据结构，开始讲真正的自己实现一个数据结构，和课上讲的有些重复了，可以快速地刷完当作复习了，然后就是完成<em>assignment</em>，这门课也一定很快就会结课了！</p>
+<hr>
+<p>这一次的总结从，七点四十多写到了现在，还是觉得或许耗费的时间太多了？但是应该是值得花这个时间进行梳理和总结的，希望是值得的。感觉现在完成一个任务确实花的时间比自己预想的时间要多得多，慢慢变好吧。</p>
+
+  <p><a class="classtest-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="tag">学习记录</a> — Jun 4, 2024</p>
+  
+
+
+          <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org/wiki/Earth" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/erasernoob" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com/in/adisaktijrs" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://twitter.com" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Twitter">
+        <svg class="twitter svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
