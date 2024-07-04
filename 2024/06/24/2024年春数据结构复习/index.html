@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="https://erasernoob.github.io/2024/06/24/2024%E5%B9%B4%E6%98%A5%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0/">
   
-  <meta name="description" content="2024年春数据结构复习图论最小生成树： prim算法， kruskal算法。 分别被称为“找点法”， “找边法”。 123456789101112131415void mini_SpanTree_Prim() &amp;#123;&amp;#125;">
+  <meta name="description" content="2024年春数据结构复习第一章&amp;amp;第二章 数据项 是数据的最小单位（组成数据元素的）（学号，性别），数据元素是数据的基本单位。  $$\text{sum} &amp;#x3D; 1 + 2 + 3 + \ldots + i &amp;#x3D; \frac{i(i+1)}{2}$$   int func ( ">
   
   
   <meta name="author" content="John Doe">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="" />
   
-  <meta property="og:description" content="2024年春数据结构复习图论最小生成树： prim算法， kruskal算法。 分别被称为“找点法”， “找边法”。 123456789101112131415void mini_SpanTree_Prim() &amp;#123;&amp;#125;">
+  <meta property="og:description" content="2024年春数据结构复习第一章&amp;amp;第二章 数据项 是数据的最小单位（组成数据元素的）（学号，性别），数据元素是数据的基本单位。  $$\text{sum} &amp;#x3D; 1 + 2 + 3 + \ldots + i &amp;#x3D; \frac{i(i+1)}{2}$$   int func ( ">
   
   <meta property="og:url" content="https://erasernoob.github.io/2024/06/24/2024%E5%B9%B4%E6%98%A5%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="">
   
-  <meta name="twitter:description" content="2024年春数据结构复习图论最小生成树： prim算法， kruskal算法。 分别被称为“找点法”， “找边法”。 123456789101112131415void mini_SpanTree_Prim() &amp;#123;&amp;#125;">
+  <meta name="twitter:description" content="2024年春数据结构复习第一章&amp;amp;第二章 数据项 是数据的最小单位（组成数据元素的）（学号，性别），数据元素是数据的基本单位。  $$\text{sum} &amp;#x3D; 1 + 2 + 3 + \ldots + i &amp;#x3D; \frac{i(i+1)}{2}$$   int func ( ">
   
   
   <meta name="twitter:image" content="https://erasernoob.github.ioundefined">
@@ -191,15 +191,91 @@
         <div class="trans">
             <h2></h2>
 
-  <h2 id="2024年春数据结构复习"><a href="#2024年春数据结构复习" class="headerlink" title="2024年春数据结构复习"></a>2024年春数据结构复习</h2><h3 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h3><p><strong>最小生成树</strong>：</p>
+  <h2 id="2024年春数据结构复习"><a href="#2024年春数据结构复习" class="headerlink" title="2024年春数据结构复习"></a>2024年春数据结构复习</h2><h3 id="第一章-第二章"><a href="#第一章-第二章" class="headerlink" title="第一章&amp;第二章"></a>第一章&amp;第二章</h3><ul>
+<li><p><strong>数据项</strong> 是数据的最小单位（组成数据元素的）（学号，性别），<strong>数据元素</strong>是数据的基本单位。</p>
+</li>
+<li><p>$$<br>\text{sum} &#x3D; 1 + 2 + 3 + \ldots + i &#x3D; \frac{i(i+1)}{2}<br>$$</p>
+</li>
+<li></li>
+<li><pre><code class="CPP">int func ( int n )
+&#123;   int i = 0, sum = 0;
+    while ( sum &lt; n )  sum += ++i;
+    return i;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  的时间复杂度是：</span><br><span class="line"></span><br><span class="line">  A.*O*(*logn*)</span><br><span class="line"></span><br><span class="line">  **B.*O*($\sqrt n$)**</span><br><span class="line"></span><br><span class="line">  C.*O*(*n*)</span><br><span class="line"></span><br><span class="line">  D.*O*(*nlogn*)</span><br><span class="line">  </span><br><span class="line">- **设一个链表最常用的操作是在末尾插入结点和删除尾结点，则选用( )最节省时间。**</span><br><span class="line">  </span><br><span class="line">  A.单链表</span><br><span class="line">  </span><br><span class="line">  B.单循环链表</span><br><span class="line">  </span><br><span class="line">  C.带尾指针的单循环链表</span><br><span class="line"></span><br><span class="line">  **D.带头结点的双循环链表**</span><br><span class="line"></span><br><span class="line">### 第三章&amp;第四章</span><br><span class="line"></span><br><span class="line">- **用链接方式存储的队列，在进行删除运算时（ ）。**</span><br><span class="line"></span><br><span class="line">  A.仅修改头指针</span><br><span class="line"></span><br><span class="line">  B.仅修改尾指针</span><br><span class="line"></span><br><span class="line">  C.头、尾指针都要修改</span><br><span class="line"></span><br><span class="line">  **D.头、尾指针可能都要修改**</span><br><span class="line"></span><br><span class="line">  - ***为什么头尾指针都要修改，当有头节点的时候且队列中只有一个元素，不只要修改头指针-&gt;next。还要修改尾指针重新指向头节点。*** </span><br><span class="line"></span><br><span class="line">#### 循环队列</span><br><span class="line"></span><br><span class="line">- 循环队列中，若是队尾指针和队头指针相等，存在两种情况（满或空）。**解决方法**：少用一个空间来存放元素。</span><br><span class="line"></span><br><span class="line">  ```c</span><br><span class="line">  Status EQueue(Queue&amp; Q, ElemType) &#123;</span><br><span class="line">      if(((Q.front + 1) % Q.length) == Q.rear) &#123;</span><br><span class="line">          return ERROR; // 此时判断队已满</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  Status DeQueue(Queue&amp; Q, ElemType) &#123;</span><br><span class="line">      if(Q.front == Q.rear) &#123;</span><br><span class="line">          return ERROR; // 判断队空的条件</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p>在链队中直接操作的可能默认的是有区分于头节点和首元节点的，不能直接操作头指针。</p>
+</li>
+<li><pre><code class="c">Status EnQueue(LinkQueue &amp;Q, QElemTYpe e) &#123;
+    if(Q.rear == Q.front) &#123;
+        return 0; // 判空
+    &#125;
+    ptr p = Q.front-&gt;next; // 操作的一般是front-&gt;next
+    e = p-&gt;data;
+    Q.front-&gt;next = p-&gt;next;
+    if(Q.rear == p) &#123; // 在这里验证了当出队元素的时候不只可能改变头指针的值，当只有最后一个元素的时候需要重新修改尾指针的值
+        Q.rear = Q.front;
+    &#125;
+    delete p;
+    return 1;
+&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 串的字符匹配</span><br><span class="line"></span><br><span class="line">- 数据结构中一般默认的串的第零个空间放串的长度。</span><br><span class="line"></span><br><span class="line">- num(子串) = $\frac&#123;n(n+1)&#125;&#123;2&#125;+1$ ，加上1是空串。</span><br><span class="line"></span><br><span class="line">- 串的模式匹配算法（BF算法）：暴力的一个一个进行判断</span><br><span class="line"></span><br><span class="line">  ```c</span><br><span class="line">  // 重要的步骤</span><br><span class="line">  int Index_BF(String S, String T, int pos) &#123;</span><br><span class="line">      // 返回模式串从pos开始第一次在子串中出现的位置</span><br><span class="line">      int i = pos; int j = 1;</span><br><span class="line">      while(i &lt;= S.Length &amp;&amp; j &lt;= T.Length) &#123;</span><br><span class="line">          if(S[i] == T[j]) &#123;</span><br><span class="line">              i++; j++; // 匹配上了一个一个往后移        </span><br><span class="line">          &#125;</span><br><span class="line">          else &#123;</span><br><span class="line">              // 匹配失败 i返回到下一个位置 j归1</span><br><span class="line">              i = i-j+2; // i = i - (j - 1) + 1 这里 j-1代表的是在这一趟中一共移动的次数，+1代表移到下一个字符</span><br><span class="line">              j = 1; // j 复原 = 1</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if(j &gt; T.Length) &#123;</span><br><span class="line">          // 代表成功匹配</span><br><span class="line">          return i-T.length;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">          return 0;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h4 id="压缩矩阵"><a href="#压缩矩阵" class="headerlink" title="压缩矩阵"></a>压缩矩阵</h4><ul>
+<li><p><strong>对称矩阵</strong>压缩后的空间大小：$\frac{n^2 - n}{2}+n$ 这里的${n^2 -n}$代表，总的元素数目-对角线的的元素数目，$&#x2F;2$之后+对角线的元素$n$得到了上三角的元素。</p>
+</li>
+<li><p>（<strong>SWPU-DS）数组 A[0..5, 0..6] 的每个元素占 5 个字节，将其按<em>列</em>优先次序存储在起始地址为 1000 的内存单元中，则元素 A[5, 5] 的地址是( )。</strong></p>
+<p><strong>A.1175</strong></p>
+<p>B.1180</p>
+<p>C.1205</p>
+<p>D.1210</p>
+<ul>
+<li>做这种题目首先要关心的是按什么为优先次序，以及数组的索引是从0开始还是从1开始</li>
+</ul>
+</li>
+</ul>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p><strong>完全二叉树</strong>：完全二叉树的度为1的节点个数只能是0或者1。相对于满二叉树，除了最后一层之外，其他每层的节点数都是最大值。、</p>
+<p><strong>二叉链表</strong>：左孩子是孩子，右孩子是兄弟。</p>
+<p>在二叉树结点的先序序列，中序序列和后序序列中，所有叶子结点的先后顺序完全相同。</p>
+<h3 id="图论"><a href="#图论" class="headerlink" title="图论"></a><strong>图论</strong></h3><p><strong>完全图</strong>：有向完全图$n*(n-1)$个节点，无向完全图$\frac{n(n-1)}{2}$个节点。</p>
+<p><strong>网</strong>：带权的图就是网。</p>
+<p><strong>最小生成树</strong>：</p>
 <p><strong>prim</strong>算法， <strong>kruskal</strong>算法。</p>
 <p>分别被称为“找点法”， “找边法”。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mini_SpanTree_Prim</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">mini_SpanTree_Prim</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
 
 
+<h2 id="错题收集"><a href="#错题收集" class="headerlink" title="错题收集"></a>错题收集</h2><ul>
+<li><p><strong>假定有k个关键字互为同义词，若用线性探测再散列法把这k个关键字存入散列表中，至少要进行（ ）次探测。</strong></p>
+<p>A.k(k-1)&#x2F;2</p>
+<p><strong>B.k(k+1)&#x2F;2</strong></p>
+<p>C.k&#x2F;2</p>
+<p>D.(k-1)&#x2F;2</p>
+</li>
+<li><p><strong>下图所示的 AOE 网表示一项包含 8 个活动的工程。活动 d 的最早开始时间和最迟开始时间分别是：</strong></p>
+<p><img src="https://images.ptausercontent.com/28de33de-076f-4f94-b856-445865994fb0.jpg" alt="GRE19-5.jpg"></p>
+<p><strong>A.12 和 14</strong></p>
+<p>B.3 和 7</p>
+<p>C.12 和 12</p>
+<p>D.15 和 15</p>
+<ul>
+<li><p>活动d的最早发生时间&#x3D;事件2的最早发生时间**&#x3D;max**{<strong>2</strong>, *<em>4</em>+***<strong>8</strong>}&#x3D; 12,最晚发生时间&#x3D;事件4的最晚发生时间-权值7。</p>
+</li>
+<li><p><strong>关键路径</strong>：是指在工程中需要时间最长的一条路径，当关键路径上的所有事件和活动都完成了，才能保证这个工程的其他所有非关键路径也都完成了。<strong>关键路径上的事件（顶点）的最早发生时间&#x3D;最晚发生时间</strong>。</p>
+</li>
+<li><p>找<strong>事件</strong>（顶点）的最早发生时间，和最晚发生时间。最早发生时间 &#x3D; max{入度的边数的权值}。最晚发生时间&#x3D;工程<strong>汇点</strong>（汇点的最晚发生时间 &#x3D; 最早发生时间）- 边的权值。</p>
+</li>
+<li><p>找<strong>活动</strong>（边）的最早发生时间，最晚发生时间。口诀“<strong>早头晚尾</strong>”，最早发生时间 &#x3D;<strong>前面的事件的最早发生时间</strong>， 最晚发生时间&#x3D;<strong>后面事件的最晚发生时间-边的权值</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
 
   <p> — Jun 24, 2024</p>
   
