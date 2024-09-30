@@ -11,34 +11,34 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - erasernoob</title>
+  <title>Gnome桌面环境下Linux中Extract AppImage文件</title>
   
-  <link rel="canonical" href="https://erasernoob.github.io/archives/page/2/">
+  <link rel="canonical" href="https://erasernoob.github.io/2024/09/25/Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E4%B8%8BLinux%E4%B8%ADExtract-AppImage%E6%96%87%E4%BB%B6/">
   
-  <meta name="description" content="">
+  <meta name="description" content="又是一个感觉浪费了一点时间的地方，效率太低了，虽然学到了一点小东西，还是记录下。  起因是因为这次下定决心想要使用Obsidian进行全面的做笔记了，今晚本来是想要开始使用Obsidian进行美美的打开代码随想录和VScode进行刷题。无奈早就已经出现的那个问题果然就这样在这个时间点进行困扰着我了，">
   
   
   <meta name="author" content="erasernoob">
   
-  <meta property="og:image" content="https://erasernoob.github.io/images/thumbnail.jpg">
+  <meta property="og:image" content="https://erasernoob.github.ioundefined">
   
   <meta property="og:site_name" content="erasernoob 的个人博客" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - erasernoob" />
+  <meta property="og:title" content="Gnome桌面环境下Linux中Extract AppImage文件" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="又是一个感觉浪费了一点时间的地方，效率太低了，虽然学到了一点小东西，还是记录下。  起因是因为这次下定决心想要使用Obsidian进行全面的做笔记了，今晚本来是想要开始使用Obsidian进行美美的打开代码随想录和VScode进行刷题。无奈早就已经出现的那个问题果然就这样在这个时间点进行困扰着我了，">
   
-  <meta property="og:url" content="https://erasernoob.github.io/archives/page/2/" />
+  <meta property="og:url" content="https://erasernoob.github.io/2024/09/25/Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E4%B8%8BLinux%E4%B8%ADExtract-AppImage%E6%96%87%E4%BB%B6/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - erasernoob">
+  <meta name="twitter:title" content="Gnome桌面环境下Linux中Extract AppImage文件">
   
-  <meta name="twitter:description" content="">
+  <meta name="twitter:description" content="又是一个感觉浪费了一点时间的地方，效率太低了，虽然学到了一点小东西，还是记录下。  起因是因为这次下定决心想要使用Obsidian进行全面的做笔记了，今晚本来是想要开始使用Obsidian进行美美的打开代码随想录和VScode进行刷题。无奈早就已经出现的那个问题果然就这样在这个时间点进行困扰着我了，">
   
   
-  <meta name="twitter:image" content="https://erasernoob.github.io/images/thumbnail.jpg">
+  <meta name="twitter:image" content="https://erasernoob.github.ioundefined">
   
-  <meta name="twitter:url" content="https://erasernoob.github.io/archives/page/2/" />
+  <meta name="twitter:url" content="https://erasernoob.github.io/2024/09/25/Gnome%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E4%B8%8BLinux%E4%B8%ADExtract-AppImage%E6%96%87%E4%BB%B6/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -189,196 +189,29 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>Gnome桌面环境下Linux中Extract AppImage文件</h2>
 
+  <p>又是一个感觉浪费了一点时间的地方，效率太低了，虽然学到了一点小东西，还是记录下。</p>
+<hr>
+<p>起因是因为这次下定决心想要使用Obsidian进行全面的做笔记了，今晚本来是想要开始使用Obsidian进行美美的打开代码随想录和VScode进行刷题。无奈早就已经出现的那个问题果然就这样在这个时间点进行困扰着我了，第一次使用VScode在Ubuntu中的时候，就发现了，怎么我在Vscode中打不出来优美的汉字了呢，就算切换到了输入法还是不行。然后这个问题就被搁置了，一直在使用我蹩脚的英语<del>来写代码的注释</del>，还说这样可以提升英语水平来着。然后今天问题就大爆发了，Obsidian竟然也不能在记笔记的时候输入中文，那好吧，硬着头皮用英语记了几节课程笔记<del>总有一天会把这个Ubuntu输入法给惩治一顿的</del>。好吧，今天妥协了，在用来刷题的笔记那不能用英语写吧，当然最重要的还是我太菜了。</p>
+<p>总之，最后就发现，原来是Unbuntu这害人不浅的<code>snap sotre</code>原来里面大部分的软件都是进行阉割过的，有一些使用<code>snap</code>包来进行安装一些源，也是阉割过的，并没有集成中文的输入法框架等。所以只能通过今天的主角<code>AppImage</code>来进行安装完整的软件了。问题又来了，通过修改AppImage文件的权限，添加可运行权限。可运行之后，下一次打开也就只能重新点击AppImage文件，并不是一个真正的应用模式。所以还需要将AppImage文件mount到桌面当中。</p>
+<p>得知，原来在Gnome中所有绑定在应用栏中的文件，都有一个<code>.desktop</code>文件存放在<code>/usr/share/applications/</code> 路径当中，想要将一个AppImage文件注册为一个应用程序，需要按照相应的格式，编写一个<code>desktopEntry</code>文件（也就相当于是一个bash脚本）。格式如下：</p>
+<p>新建一个<code>.desktop</code>文件：（注意以后需要一个特定的AppImage文件夹来存放所有AppImage）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.local/share/applications/obsidian.desktop</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=Obsidian</span><br><span class="line">Exec=/home/erasernoob/Downloads/app/squashfs-root/obsidian</span><br><span class="line">Icon=/path/to/obsidian/icon.png  <span class="comment"># 你可以替换为实际的图标路径</span></span><br><span class="line">Type=Application</span><br><span class="line">Categories=Utility;</span><br><span class="line">Terminal=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Jun 17, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/06/17/2024%E6%98%A515%E5%91%A8/" class="">
-            
-              2024春15周
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>其中的所有路径和变量的位置，找到又是一个问题。最后发现，是需要<code>extract</code>目标的AppImage文件之后得到详细的文件信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./your.AppImage --appimage-extract</span><br></pre></td></tr></table></figure>
 
-    <article>
-      <div class="row">
+<p>将会得到一个神秘的<code>squashfs-root</code>文件夹，里面包含了所有集成在镜像文件中的所有东西，路径也就可以按照此进行编写。</p>
+<p>文件编写好之后，需要对桌面文件数据库进行更新：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-desktop-database ~/.local/share/applications/</span><br></pre></td></tr></table></figure>
 
-        <div class="three columns left lit">
-          <p class="bottom">Jun 14, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/06/14/wsl%E6%8A%98%E8%85%BE%E8%AE%B0/" class="">
-            
-              wsl折腾记
-            
-          </a>
-        </div>
-      </div>
-    </article>
+<p>更新之后就大功告成了。打开桌面栏，应用已经出现在列表里了。</p>
 
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 9, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/06/09/2024%E6%98%A514%E5%91%A8/" class="">
-            
-              2024春14周
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 4, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/06/04/2024%E6%98%A513%E5%91%A8/" class="">
-            
-              2024春13周
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 19, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/03/19/VIMMIV/" class="">
-            
-              VIMMIV
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Mar 9, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/03/09/2024%E5%B9%B43%E6%9C%889%E6%97%A5%E5%8D%88%E5%90%8E/" class="">
-            
-              2024年3月9日午后
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Feb 29, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/02/29/%E4%BA%8E%E5%B9%B4%E7%A6%BB%E5%8E%BB%EF%BC%8C%E4%BA%8E%E7%83%9F%E8%8A%B1%E6%9E%AF%E8%90%8E/" class="">
-            
-              于年离去，于烟花枯萎
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 15, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/15/2024%E5%B9%B4%E5%AF%92%E5%81%87%E5%B1%95/" class="">
-            
-              2024年寒假展
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 11, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/11/%E8%BF%91%E6%9C%9F%E6%83%B3%E7%9A%84%E5%92%8C%E5%AD%A6%E7%9A%84/" class="">
-            
-              近期想的和学的
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jan 9, 2024</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2024/01/09/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8A%98%E8%85%BE%E9%A6%96%E6%AC%A1%E8%AE%B0%E5%BD%95/" class="">
-            
-              首次搭建博客网站记录
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-
-    <a class="mr" href="/archives/">
-      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
-      </svg>
-      <span>Recent</span>
-    </a>
-
-    
-    
-
-    <a class="" href="/archives/page/3/">
-      <span>Older</span>
-      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-      </svg>
-    </a>
-
-    
-  </ul>
-</div>
+  <p><a class="classtest-link" href="/tags/%E6%8A%98%E8%85%BE/" rel="tag">折腾</a> — Sep 25, 2024</p>
+  
 
 
           <div class="row mt-2">
