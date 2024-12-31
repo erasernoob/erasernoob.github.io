@@ -9,16 +9,16 @@
 <meta name="keywords" content="后端">
 <meta name="description" content="Learn react reactively.">
 <meta name="author" content="">
-<link rel="canonical" href="/posts/springcloud/">
+<link rel="canonical" href="https://erasernoob.github.io/posts/springcloud/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="mask-icon" href="/safari-pinned-tab.svg">
+<link rel="icon" href="https://erasernoob.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://erasernoob.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://erasernoob.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://erasernoob.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://erasernoob.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="/posts/springcloud/">
+<link rel="alternate" hreflang="en" href="https://erasernoob.github.io/posts/springcloud/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,7 +55,7 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="/posts/springcloud/">
+</noscript><meta property="og:url" content="https://erasernoob.github.io/posts/springcloud/">
   <meta property="og:site_name" content="xingpiaoliang&#39;s">
   <meta property="og:title" content="微服务学习笔记">
   <meta property="og:description" content="Learn react reactively.">
@@ -65,9 +65,9 @@
     <meta property="article:published_time" content="2024-12-03T10:42:24+08:00">
     <meta property="article:modified_time" content="2024-12-03T10:42:24+08:00">
     <meta property="article:tag" content="后端">
-      <meta property="og:image" content="/avatar.jpg">
+      <meta property="og:image" content="https://erasernoob.github.io/avatar.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="/avatar.jpg">
+<meta name="twitter:image" content="https://erasernoob.github.io/avatar.jpg">
 <meta name="twitter:title" content="微服务学习笔记">
 <meta name="twitter:description" content="Learn react reactively.">
 
@@ -81,13 +81,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "/posts/"
-    }
+      "item": "https://erasernoob.github.io/posts/"
+    }, 
     {
       "@type": "ListItem",
-      "position":  1 ,
+      "position":  2 ,
       "name": "微服务学习笔记",
-      "item": "/posts/springcloud/"
+      "item": "https://erasernoob.github.io/posts/springcloud/"
     }
   ]
 }
@@ -105,18 +105,18 @@
   "articleBody": "SpringCloud 拆分微服务 每个微服务在配置文件中都需要设置新的名字。 Swagger配置的时候也要修改扫描controller的路径。 主类的mapper包扫描也要修改 远程调用 使用RestTemplate远程微服务调用其他资源，利用网络。 服务治理 注册中心原理 负载均衡： 轮询、随机、加权轮询、哈希。\n注册中心提供服务：\n记录并监控服务提供者状态。 心跳续约（服务提供者） 推送变更（服务消费者） nacos注册中心 docker run -d \\ --name nacos \\ --env-file ./nacos/custom.env \\ -p 8848:8848 \\ -p 9848:9848 \\ -p 9849:9849 \\ --network=campus-site \\ --restart=always \\ nacos/nacos-server:v2.1.0-slim 服务注册 -\u003e 服务发现 OpenFeign 底层完成跨服务的http请求代码，feginClient 注册一个client接口，直接调用 网关路由配置 网关作为另一新的微服务，依赖于spring-cloud-gateway. 在配置文件里对routes nacos server-port进行配置。 路由（routes）的配置 源码内部其实是RoutesDefinition predicates filter 等等基本属性 网关登录校验 在网关处对JWT令牌进行校验。在网关转发之前，对JWT进行校验。\n网关内部过滤器实际上分为pre post 两部分，当进入微服务得到请求结果之后，出请求时也会经过post部分。 网关进行登录校验后向微服务传递登录成功的用户信息，用户信息的保存 -\u003e HTTP HEADER 自定义过滤器 GateWayFilter 作用于指定的路由，在实际实现中，使用继承抽象类AbstractGatewayFilterFactory，进行自定义。使用装饰模式类 OrderedGatewayFilter对优先级进行配置。\n返回一个新的 GateWayFilter（interface）只能通过创建匿名内部类。 public class PrintAnyGatewayFilterFactory extends AbstractGatewayFilterFactory\u003cPrintAnyGatewayFilterFactory.Config\u003e { @Override public GatewayFilter apply(Config config) { return new OrderedGatewayFilter(new GatewayFilter() { @Override public Mono\u003cVoid\u003e filter(ServerWebExchange exchange, GatewayFilterChain chain) { System.out.println(\"自定义打印过滤器已经执行\"); // 放行 return chain.filter(exchange); } }, 1); } @Data public static class Config { private String a; private String b; private String c; } @Override public List\u003cString\u003e shortcutFieldOrder() { // 确定参数顺序 return List.of(\"a\", \"b\", \"c\"); } public PrintAnyGatewayFilterFactory() { // 将参数类传递给父类 super(Config.class); } } 当拥有多个参数时，自定义一个配置属性类，同时将参数对应的顺序依次返回。 GlobalFilter 作用范围于所有的路由\n从请求中提取出JWT令牌，并进行校验，接着继续向下传递\n@Component @RequiredArgsConstructor public class AuthGlobalFilter implements GlobalFilter, Ordered { private final AuthProperties authProperties; private final JwtTool jwtTool; private final AntPathMatcher antPathMatcher = new AntPathMatcher(); @Override public Mono\u003cVoid\u003e filter(ServerWebExchange exchange, GatewayFilterChain chain) { ServerHttpRequest request = exchange.getRequest(); // 判断是否需要做登录拦截(有白名单) if(isExclude(request.getPath().toString())) { return chain.filter(exchange); } // 获取token List\u003cString\u003e headers = request.getHeaders().get(\"authorization\"); String token = null; if (headers != null \u0026\u0026 !headers.isEmpty()) { token = headers.get(0); } // 解析校验token Long userId = null; try { userId = jwtTool.parseToken(token); } catch (UnauthorizedException e) { // 发送拦截返回 ServerHttpResponse response = exchange.getResponse(); response.setStatusCode(HttpStatus.UNAUTHORIZED); return response.setComplete(); } // 传递用户信息 String userInfo = userId.toString(); ServerWebExchange newExchange = exchange.mutate() .request(builder -\u003e builder.header(\"user-info\", userInfo)) .build(); log.info(\"解析得到用户Id： {}\", userId); return chain.filter(newExchange); } } 网关向用户传递用户信息 使用springMVC将定义一个通用的拦截器，所有微服务引入通用模块，拦截器将用户信息保存在ThreadLocal.\n在公共模块中，添加interceptors获得网关传递过来的用户信息id，spring-mvc的配置，还要添加好interceptors,但由于网关内部底层不是由spring-mvc实现，所需要添加配置条件注解，借助springmvc核心类DispatcherServlet。排除掉无法在网关模块中自动装配的错误。\npublic class UserInfoInterceptor implements HandlerInterceptor { @Override public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception { String userInfo = request.getHeader(\"user-info\"); if(StrUtil.isNotBlank(userInfo)) { UserContext.setUser(Long.parseLong(userInfo)); } return true; } @Override public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception { HandlerInterceptor.super.afterCompletion(request, response, handler, ex); } } @Configuration @ConditionalOnClass(DishpatcherServlet.class) 用户间传递信息OpenFeign 使用OpenFeign提供的拦截器接口，建立拦截器，加入并保存请求头中的用户信息。RequestInterceptors\npublic class DefaultFeignConfig { /** * 设置日志等级 * @return */ @Bean public Logger.Level fullfeignLoggerLevel() {return Logger.Level.FULL;} @Bean public RequestInterceptor userInfoRequestInterceptor() { return new RequestInterceptor() { @Override public void apply(RequestTemplate requestTemplate) { // 时刻注意空指针问题 Long userId = UserContext.getUser(); if (userId != null) { requestTemplate.header(\"user-info\", userId.toString()); } } }; } /** * fallbackFactory需要的注入为bean * @return */ @Bean public ItemClientFallbackFactory itemClientFallbackFactory() { return new ItemClientFallbackFactory(); } } 总结：微服务项目登录以及用户信息传递解决方案 网关获取用户信息 使用网关提供的GlobalFilter实施登录检验，和保存请求头。 网关向微服务内部传递用户信息 使用HandlerInterceptor也就是SpringMVC配置拦截器，将网关发来的请求头中携带的用户信息，保存到ThreadLocal 在所有微服务中的公共类进行拦截器配置。（注意要排除掉网关模块的影响） 微服务之间传递用户信息 使用OpenFeign提供的RequestInterceptor拦截器，将本地ThreadLocal中的用户信息，添加到请求头中发出 接收请求的微服务，通过MVC拦截器，保存用户信息。 配置管理 微服务读取配置管理服务中的配置，共享配置\n配置共享 nacos实现配置共享\n配置热更新 nacos需创建一个和微服务名有关的配置文件cart-service-local.yml 创建一个ConfigurationProperties利用类，在代码中更新写死的需要热改变的配置文件 动态路由 动态路由配置\n添加监听器 @Component @RequiredArgsConstructor @Slf4j public class DynamicRouteLoader { private final NacosConfigManager nacosConfigManager; private final String dataId = \"gateway-routes.json\"; private final String group = \"DEFAULT_GROUP\"; private final RouteDefinitionWriter routeDefinitionWriter; private final Set\u003cString\u003e routeIds = new HashSet\u003c\u003e(); @PostConstruct public void initRouteConfigListener() throws NacosException { // 项目初始化的时候先拉取配置文件的同时添加一个监听器 String configInfo = nacosConfigManager.getConfigService() .getConfigAndSignListener(dataId, group, 5000, new Listener() { @Override public Executor getExecutor() { return null; } @Override public void receiveConfigInfo(String configInfo) { // 监听到配置的变更，此时更新路由表 log.info(\"监听到配置的变更，此时更新路由表....\"); updateConfigInfo(configInfo); } }); // 第一次拉取到配置的时候也要更新路由表 updateConfigInfo(configInfo); } public void updateConfigInfo(String configInfo) { // 解析配置信息，转换为路由RouteDefinition // 传过来的应该是列表 List\u003cRouteDefinition\u003e routeDefinitions = JSONUtil.toList(configInfo, RouteDefinition.class); // 更新路由列表 // 首先先删除 for (String routeId : routeIds) { routeDefinitionWriter.delete(Mono.just(routeId)).subscribe(); } // 清除记录 routeIds.clear(); for (RouteDefinition routeDefinition : routeDefinitions) { // 更新路由表 routeDefinitionWriter.save(Mono.just(routeDefinition)).subscribe(); // 记录路由id，便于下次更新时进行删除 routeIds.add(routeDefinition.getId()); } } } nacos添加路由配置文件（因为无法对yml文件进行解析，使用json进行配置） [ { \"id\": \"item\", \"predicates\": [{ \"name\": \"Path\", \"args\": {\"_genkey_0\":\"/items/**\", \"_genkey_1\":\"/search/**\"} }], \"filters\": [], \"uri\": \"lb://item-service\" }, { \"id\": \"cart\", \"predicates\": [{ \"name\": \"Path\", \"args\": {\"_genkey_0\":\"/carts/**\"} }], \"filters\": [], \"uri\": \"lb://cart-service\" }, { \"id\": \"user\", \"predicates\": [{ \"name\": \"Path\", \"args\": {\"_genkey_0\":\"/users/**\", \"_genkey_1\":\"/addresses/**\"} }], \"filters\": [], \"uri\": \"lb://user-service\" }, { \"id\": \"trade\", \"predicates\": [{ \"name\": \"Path\", \"args\": {\"_genkey_0\":\"/orders/**\"} }], \"filters\": [], \"uri\": \"lb://trade-service\" }, { \"id\": \"pay\", \"predicates\": [{ \"name\": \"Path\", \"args\": {\"_genkey_0\":\"/pay-orders/**\"} }], \"filters\": [], \"uri\": \"lb://pay-service\" } ] 服务保护和分布式事务 雪崩问题 微服务相互调用，服务提供者出现了故障或阻塞。 服务调用者没有做好异常处理，导致自身故障。 调用链中的所有服务级联失败，导致整个集群故障。 解决（服务保护）方案\n请求限流（保护提供者） 线程隔离（保护消费者） 服务熔断（监控已发出的请求，若该接口异常请求比例或慢调用比例，超出了设定的阈值，直接熔断该业务接口） 熔断期间，全部走fallback 逻辑，返回。 Sentinel 簇点链路: 一系列的调用的接口，形成的一条链路。\n实现限流规则：在簇点链路中，对每一个接口更改流控中的单机规则。\n实现服务熔断：需要将FeignClient中的作为Sentinel的簇点资源（配置Fallback）。\n两种方式：\nFallbackFactory（可以处理远程调用）\nFallbackClass（无法处理远程调用）\n自定义类需要的client的FallbackFactory\n服务熔断 断路器 由断路器记录统计服务调用的异常比例和慢请求比例，超过一定阈值开始熔断该服务。\n内部由三种状态形成的状态机， Closed Open Half-Open\n当熔断时间到 Open -\u003e Half-Open 放行一次请求，根据统计请求状态转换到相应的状态。 分布式事务 Seata架构 TC(Transaction Cooridinator)事务协调者，维护全局的和分支的事务的状态，协调全局事务提交或者回滚 TM(Transaction Manager)事务管理器 ：告知TC，指明全局事务的范围，开始全局事务、提交或回滚全局事务。 RM(Resource Manager) 资源管理器：管理全局事务下的分支事务，与TC协调以注册分支事务和报告分支事务的状态。 Seata本身就是一个微服务，将其配置修改，docker部署之后，就会注册到nacos服务列表中一起集中管理。\nXA模式 XA，一种分布式事务处理标准。（两阶段提交）\n一阶段 TM报告TC开启全局事务。 TM开始调用各分支。 RM向TC注册分支事务。 分支微服务执行业务SQL。 分支（执行结束之后）报告事务状态。 二阶段 TM报告TC（所有分支事务结束）全局事务结束。 TC检查各分支事务状态。向各分支发送指令（提交/回滚） 优点 满足事务的强一致性，满足ACID原则（Atomicity Consistency Isolation Durability） 实现简单 缺点 因为在一阶段需要锁定数据库资源，（各分支是串行执行的）等待到二阶段才会释放资源。 依赖于关系型数据库的实现事务. AT模式 一阶段 RM注册分支事务 RM记录undo-log（数据快照） RM执行业务sql并提交事务。 RM向TC报告事务状态 二阶段 TC收到TM全局事务完成信号。\nTC检查分支事务状态。（若需要回滚，恢复快照数据，成功，删除快照）。\n创建一个更新前后数据库快照，不用等待各自业务sql的执行完成后释放锁资源。\n最终一致性：只有在更新恢复快照之前，会有短暂的时间出现数据的不一致性。\nAT vs XA AT使用数据快照实现数据回滚，XA模式依赖于数据库机制实现回滚。 XA一阶段不提交事务，锁定资源，AT一阶段提交事务，不锁定资源。 ",
   "wordCount" : "676",
   "inLanguage": "en",
-  "image": "/avatar.jpg","datePublished": "2024-12-03T10:42:24+08:00",
+  "image": "https://erasernoob.github.io/avatar.jpg","datePublished": "2024-12-03T10:42:24+08:00",
   "dateModified": "2024-12-03T10:42:24+08:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "/posts/springcloud/"
+    "@id": "https://erasernoob.github.io/posts/springcloud/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "xingpiaoliang's",
     "logo": {
       "@type": "ImageObject",
-      "url": "/favicon.ico"
+      "url": "https://erasernoob.github.io/favicon.ico"
     }
   }
 }
@@ -139,7 +139,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <a href="https://erasernoob.github.io/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -165,17 +165,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="/archives" title="archives">
+                <a href="https://erasernoob.github.io/archives" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="/categories/" title="categories">
+                <a href="https://erasernoob.github.io/categories/" title="categories">
                     <span>categories</span>
                 </a>
             </li>
             <li>
-                <a href="/tags/" title="tags">
+                <a href="https://erasernoob.github.io/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
@@ -645,7 +645,7 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a></li>
+      <li><a href="https://erasernoob.github.io/tags/%E5%90%8E%E7%AB%AF/">后端</a></li>
     </ul>
 
 <ul class="share-buttons">
@@ -656,7 +656,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="/">xingpiaoliang&#39;s</a></span> · 
+        <span>&copy; 2024 <a href="https://erasernoob.github.io/">xingpiaoliang&#39;s</a></span> · 
 
     <span>
         Powered by

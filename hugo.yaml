@@ -13,6 +13,8 @@ enableEmoji: true
 pygmentsUseClasses: true
 
 params:
+  environment: "production"
+
   showShareButtons: true
   ShareButtons: ["github", "applemusic"] # To customize which share buttons to be enabled on page
 
