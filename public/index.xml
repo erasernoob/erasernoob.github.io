@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>xingpiaoliang&#39;s</title>
-    <link>//localhost:1313/</link>
+    <link>/</link>
     <description>Recent content on xingpiaoliang&#39;s</description>
     <generator>Hugo -- 0.140.0</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Dec 2024 09:53:14 +0800</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The second journey to React</title>
-      <link>//localhost:1313/posts/react/</link>
+      <link>/posts/react/</link>
       <pubDate>Tue, 31 Dec 2024 09:53:14 +0800</pubDate>
-      <guid>//localhost:1313/posts/react/</guid>
+      <guid>/posts/react/</guid>
       <description>Learn react reactively.</description>
     </item>
     <item>
       <title>My First Blog Post</title>
-      <link>//localhost:1313/frontmatter/</link>
+      <link>/frontmatter/</link>
       <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/frontmatter/</guid>
+      <guid>/frontmatter/</guid>
       <description></description>
     </item>
     <item>
       <title>微服务学习笔记</title>
-      <link>//localhost:1313/posts/springcloud/</link>
+      <link>/posts/springcloud/</link>
       <pubDate>Tue, 03 Dec 2024 10:42:24 +0800</pubDate>
-      <guid>//localhost:1313/posts/springcloud/</guid>
+      <guid>/posts/springcloud/</guid>
       <description>Learn react reactively.</description>
     </item>
     <item>
       <title></title>
-      <link>//localhost:1313/list/</link>
+      <link>/list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/list/</guid>
+      <guid>/list/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;!-- raw HTML omitted --&gt;</description>
     </item>
     <item>
       <title>Archives</title>
-      <link>//localhost:1313/search/</link>
+      <link>/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/search/</guid>
+      <guid>/search/</guid>
       <description></description>
     </item>
   </channel>

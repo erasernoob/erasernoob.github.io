@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>The second journey to React | xingpiaoliang&#39;s</title>
 <meta name="keywords" content="前端">
 <meta name="description" content="Learn react reactively.">
 <meta name="author" content="">
-<link rel="canonical" href="//localhost:1313/posts/react/">
+<link rel="canonical" href="/posts/react/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="//localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="mask-icon" href="/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="//localhost:1313/posts/react/">
+<link rel="alternate" hreflang="en" href="/posts/react/">
 <noscript>
     <style>
         #theme-toggle,
@@ -55,7 +55,72 @@
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="/posts/react/">
+  <meta property="og:site_name" content="xingpiaoliang&#39;s">
+  <meta property="og:title" content="The second journey to React">
+  <meta property="og:description" content="Learn react reactively.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-31T09:53:14+08:00">
+    <meta property="article:modified_time" content="2024-12-31T09:53:14+08:00">
+    <meta property="article:tag" content="前端">
+      <meta property="og:image" content="/avatar.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="/avatar.jpg">
+<meta name="twitter:title" content="The second journey to React">
+<meta name="twitter:description" content="Learn react reactively.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/posts/"
+    }
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "The second journey to React",
+      "item": "/posts/react/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The second journey to React",
+  "name": "The second journey to React",
+  "description": "Learn react reactively.",
+  "keywords": [
+    "前端"
+  ],
+  "articleBody": "The Static Pages The Fundamental for the first Project\ncomposable Declarative createRoot().render() the Header in the jsx is a object Object {type: 'h1', key: null, ref: null, props: {children: 'Header'}} Props React Can’s render the Object exclude the HTML element object. So use the array.map() to return a components array use the props raw data. uniqueKey Must pass a key named key as the unique props.\nThree different way to pass the object prop const entryElements = data.map((m, index) =\u003e { \u003cEntry key={m.id} // key=index img=d.img /\u003e }) // get a array of components Pass down the entire Object as the props const entryElements = data.map((m, index) =\u003e { \u003cEntry key={m.id} // key=index entry={m} /\u003e }) // get a array of components Use the spread object method to pass props const entryElements = data.map((entry, index) =\u003e { \u003cEntry key={entry.id} // key=index {...entry} // convert the object's key to single props /\u003e }) // get a array of components State(Dynamic web application) FormData // The way to handle the submit action in the react 19 \u003cform action={handleSubmit} \u003e \u003cinput defaultVlue=\"1490910337@main.com\" type=\"email\"/\u003e \u003c/form\u003e const handleSubmit = (formData) =\u003e { const data = formData.get(data) } The above code will do those thing automatically\npreventDefault prevent the default behavior for the form submission form.reset() Passing the formData object directly Make this become more declarative radio type input and the checkbox\nconst getData = (formData) =\u003e { // get all the checkbox value formData.getAll('checkBoxValue') // when deal with the mutible value like the checbox and the select option, need set all the options a distinct value from each other } \u003clabel htmlFor=\"favColor\"\u003eWhat is your favorite color?\u003c/label\u003e \u003cselect id=\"favColor\" name=\"favColor\" defaultValue=\"\" required\u003e \u003coption value=\"\" disabled\u003e-- Choose a color --\u003c/option\u003e \u003c/select\u003e Use the Object.fromEntries to get the whole formdata\nfunction signUp(formData) { console.log(Object.fromEntries(formData)) // also it still needs to getAll to get the whole checkbox array value formData.getAll('checkboxName') } The DataFlow in the React Passing Data to component: Just like the tree, there are sibling components and the parent components,. And in React DataFlow can only pass the data from top to down (parent to children). So there should be the third party like Redux or Context, to pass the data around the react.\nUse the callback function to control the Components’ data flow Restore the main source in on parent rather than pass the pad.id to the children components.\nReact state can be a good maintainer to storage the information between others’ state change, that the information won’t disappear when the page re-render (Out)Side Effect Controlled components Functional programming Immutable Pure Function (out)side effects Those thing that react does not Control on it’s own. To escape from the React ecosystem, need to interactive with outside world. useEffect(setup(callback function), dependencies?) // only after the DOM was rendered, then the callback run By Default the callback function will run every single(so well run at the first time) time when the dom is rerendered , and the dependecies will be a state array, only when the dependency change, the function run.\nuseEffect cleanup function Where is a UseEffect callback function, React will automatically receive a function called “cleanUp function”\nuseEffect(() =\u003e { ..... return function() { // this is the useEffect clean up function when this component is unmounted } }) UseRef() Ref can be mutated directly\nChanging them doesn’t cause a re-render\nconst recipeSelection = useRef(null) // ref can only add to the normal html elements \u003cinput ref={recipeSelection} /\u003e recipeSelection = Object{current: null} Controlled Components CSS padding-block, margin-block can edit the bottom and top em -\u003e 1em = parent’font size (parent = 16px, 1em = 16px) 1rem -\u003e stands for ‘root em’ root element’s(the ) size as the standard to edit the bullet of the li use the typically pseudo element li::marker /* the pseudo selector for the bullet before the li's context */ .content-item::marker { color: #61DAFB; /* rem stands for the root em */ font-size: 1.5rem; } box-sizing border-box: width = border + padding content-box(default): width + border + padding = WIDTH flex align-items: center (make the box’s element align by center) 100% = parent’s elements’ size Add the background-image background-image: url(\"./assets/react-logo-half.png\"); background-repeat: no-repeat; background-position: right; background-position: (x, y)); FlexBox FlexBox should neet a container to wrapper the whole items become the parent\njustify-content: sapce-between : // use the whole availiable space put it in the middle - flex-start(default) - flex-end - center - space-around (equal space) flex-direction: column / row(default) align-items(decide the vertical): (used in the container(parent)) stretch(defalt) align-selfs: (used in the container's children) flex = flex-grow flex-shrink flex-basis flex = 1 (width = allWidth / itemNumbers) flex-direction flex-wrap: no(default) Only allowed one row\nflex flex = 1 == flex shrink = flex-grow = 1, flex-basis = 0 = flex = 1 1 0\nflexbasis: a way to set the base width of the flex children\nflexgrow: element will grow while the window’s size bigger\nflexshrink: the opposite from the flex grow\nsource order ",
+  "wordCount" : "819",
+  "inLanguage": "en",
+  "image": "/avatar.jpg","datePublished": "2024-12-31T09:53:14+08:00",
+  "dateModified": "2024-12-31T09:53:14+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/posts/react/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "xingpiaoliang's",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/favicon.ico"
+    }
+  }
+}
+</script>
     <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 
@@ -74,7 +139,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="//localhost:1313/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <a href="/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -100,17 +165,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="//localhost:1313/archives" title="archives">
+                <a href="/archives" title="archives">
                     <span>archives</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/categories/" title="categories">
+                <a href="/categories/" title="categories">
                     <span>categories</span>
                 </a>
             </li>
             <li>
-                <a href="//localhost:1313/tags/" title="tags">
+                <a href="/tags/" title="tags">
                     <span>tags</span>
                 </a>
             </li>
@@ -321,7 +386,7 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="//localhost:1313/tags/%E5%89%8D%E7%AB%AF/">前端</a></li>
+      <li><a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></li>
     </ul>
 
 <ul class="share-buttons">
@@ -332,7 +397,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="//localhost:1313/">xingpiaoliang&#39;s</a></span> · 
+        <span>&copy; 2024 <a href="/">xingpiaoliang&#39;s</a></span> · 
 
     <span>
         Powered by
