@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>微服务学习笔记 | xingpiaoliang&#39;s</title>
+<meta name="keywords" content="后端">
+<meta name="description" content="Learn react reactively.">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/posts/springcloud/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/springcloud/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/archives" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.org" title="example.org">
+                    <span>example.org</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      微服务学习笔记
+    </h1>
+    <div class="post-description">
+      Learn react reactively.
+    </div>
+    <div class="post-meta"><span title='2024-12-03 10:42:24 +0800 CST'>December 3, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="springcloud">SpringCloud<a hidden class="anchor" aria-hidden="true" href="#springcloud">#</a></h2>
+<h3 id="拆分微服务">拆分微服务<a hidden class="anchor" aria-hidden="true" href="#拆分微服务">#</a></h3>
+<ul>
+<li>每个微服务在配置文件中都需要设置新的名字。</li>
+<li>Swagger配置的时候也要修改扫描controller的路径。</li>
+<li>主类的mapper包扫描也要修改</li>
+</ul>
+<h3 id="远程调用">远程调用<a hidden class="anchor" aria-hidden="true" href="#远程调用">#</a></h3>
+<ul>
+<li>使用<code>RestTemplate</code>远程微服务调用其他资源，利用网络。</li>
+</ul>
+<h3 id="服务治理">服务治理<a hidden class="anchor" aria-hidden="true" href="#服务治理">#</a></h3>
+<h4 id="注册中心原理">注册中心原理<a hidden class="anchor" aria-hidden="true" href="#注册中心原理">#</a></h4>
+<p>负载均衡： 轮询、随机、加权轮询、哈希。</p>
+<p>注册中心提供服务：</p>
+<ul>
+<li>记录并监控服务提供者状态。</li>
+<li>心跳续约（服务提供者）</li>
+<li>推送变更（服务消费者）</li>
+</ul>
+<h4 id="nacos注册中心">nacos注册中心<a hidden class="anchor" aria-hidden="true" href="#nacos注册中心">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-PowerShell" data-lang="PowerShell"><span class="line"><span class="cl"><span class="n">docker</span> <span class="n">run</span> <span class="n">-d</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="p">-</span><span class="n">-name</span> <span class="n">nacos</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="p">-</span><span class="n">-env</span><span class="o">-file</span> <span class="p">./</span><span class="n">nacos</span><span class="p">/</span><span class="n">custom</span><span class="p">.</span><span class="py">env</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="n">-p</span> <span class="mf">8848</span><span class="err">:</span><span class="mf">8848</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="n">-p</span> <span class="mf">9848</span><span class="err">:</span><span class="mf">9848</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="n">-p</span> <span class="mf">9849</span><span class="err">:</span><span class="mf">9849</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="p">-</span><span class="n">-network</span><span class="p">=</span><span class="nb">campus-site</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="p">-</span><span class="n">-restart</span><span class="p">=</span><span class="n">always</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"><span class="n">nacos</span><span class="p">/</span><span class="nb">nacos-server</span><span class="err">:</span><span class="n">v2</span><span class="p">.</span><span class="py">1</span><span class="p">.</span><span class="mf">0</span><span class="n">-slim</span>
+</span></span></code></pre></div><h5 id="服务注册---服务发现">服务注册 -&gt; 服务发现<a hidden class="anchor" aria-hidden="true" href="#服务注册---服务发现">#</a></h5>
+<h4 id="openfeign">OpenFeign<a hidden class="anchor" aria-hidden="true" href="#openfeign">#</a></h4>
+<ul>
+<li>底层完成跨服务的http请求代码，<code>feginClient</code> 注册一个<code>client</code>接口，直接调用</li>
+</ul>
+<h3 id="网关路由配置">网关路由配置<a hidden class="anchor" aria-hidden="true" href="#网关路由配置">#</a></h3>
+<ul>
+<li>网关作为另一新的微服务，依赖于<code>spring-cloud-gateway</code>.</li>
+<li>在配置文件里对<code>routes</code> <code>nacos</code> <code>server-port</code>进行配置。</li>
+</ul>
+<h4 id="路由routes的配置">路由（routes）的配置<a hidden class="anchor" aria-hidden="true" href="#路由routes的配置">#</a></h4>
+<ul>
+<li>源码内部其实是<code>RoutesDefinition</code></li>
+<li><code>predicates</code> <code>filter</code> 等等基本属性</li>
+</ul>
+<h4 id="网关登录校验">网关登录校验<a hidden class="anchor" aria-hidden="true" href="#网关登录校验">#</a></h4>
+<p>在网关处对JWT令牌进行校验。在网关转发之前，对JWT进行校验。</p>
+<ul>
+<li>网关内部过滤器实际上分为<code>pre</code> <code>post</code> 两部分，当进入微服务得到请求结果之后，出请求时也会经过<code>post</code>部分。</li>
+<li>网关进行登录校验后向微服务传递登录成功的用户信息，用户信息的保存 -&gt; HTTP HEADER</li>
+</ul>
+<h5 id="自定义过滤器">自定义过滤器<a hidden class="anchor" aria-hidden="true" href="#自定义过滤器">#</a></h5>
+<ul>
+<li>
+<p><code>GateWayFilter</code> 作用于指定的路由，在实际实现中，使用继承抽象类<code>AbstractGatewayFilterFactory</code>，进行自定义。使用<strong>装饰模式类</strong> <code>OrderedGatewayFilter</code>对优先级进行配置。</p>
+<ul>
+<li>返回一个新的 <code>GateWayFilter</code>（interface）只能通过创建匿名内部类。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PrintAnyGatewayFilterFactory</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractGatewayFilterFactory</span><span class="o">&lt;</span><span class="n">PrintAnyGatewayFilterFactory</span><span class="p">.</span><span class="na">Config</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">GatewayFilter</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">Config</span><span class="w"> </span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderedGatewayFilter</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">GatewayFilter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="n">Mono</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">ServerWebExchange</span><span class="w"> </span><span class="n">exchange</span><span class="p">,</span><span class="w"> </span><span class="n">GatewayFilterChain</span><span class="w"> </span><span class="n">chain</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;自定义打印过滤器已经执行&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// 放行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">chain</span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">exchange</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Config</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">shortcutFieldOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 确定参数顺序</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&#34;a&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;b&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;c&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PrintAnyGatewayFilterFactory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 将参数类传递给父类</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">Config</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>当拥有多个参数时，自定义一个配置属性类，同时将参数对应的顺序依次返回。</li>
+</ul>
+</li>
+<li>
+<p><code>GlobalFilter</code> 作用范围于所有的路由</p>
+</li>
+<li>
+<p>从请求中提取出JWT令牌，并进行校验，接着继续向下传递</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequiredArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AuthGlobalFilter</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">GlobalFilter</span><span class="p">,</span><span class="w"> </span><span class="n">Ordered</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AuthProperties</span><span class="w"> </span><span class="n">authProperties</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">JwtTool</span><span class="w"> </span><span class="n">jwtTool</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AntPathMatcher</span><span class="w"> </span><span class="n">antPathMatcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AntPathMatcher</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Mono</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="n">ServerWebExchange</span><span class="w"> </span><span class="n">exchange</span><span class="p">,</span><span class="w"> </span><span class="n">GatewayFilterChain</span><span class="w"> </span><span class="n">chain</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ServerHttpRequest</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchange</span><span class="p">.</span><span class="na">getRequest</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 判断是否需要做登录拦截(有白名单)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">isExclude</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="na">getPath</span><span class="p">().</span><span class="na">toString</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">chain</span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">exchange</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 获取token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getHeaders</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;authorization&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">headers</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">headers</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headers</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 解析校验token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Long</span><span class="w"> </span><span class="n">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="n">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jwtTool</span><span class="p">.</span><span class="na">parseToken</span><span class="p">(</span><span class="n">token</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">UnauthorizedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 发送拦截返回</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ServerHttpResponse</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchange</span><span class="p">.</span><span class="na">getResponse</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">response</span><span class="p">.</span><span class="na">setStatusCode</span><span class="p">(</span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">UNAUTHORIZED</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">setComplete</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 传递用户信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">userInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userId</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ServerWebExchange</span><span class="w"> </span><span class="n">newExchange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exchange</span><span class="p">.</span><span class="na">mutate</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">request</span><span class="p">(</span><span class="n">builder</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">builder</span><span class="p">.</span><span class="na">header</span><span class="p">(</span><span class="s">&#34;user-info&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">userInfo</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&#34;解析得到用户Id： {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">chain</span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">newExchange</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h5 id="网关向用户传递用户信息">网关向用户传递用户信息<a hidden class="anchor" aria-hidden="true" href="#网关向用户传递用户信息">#</a></h5>
+<p>使用<code>springMVC</code>将定义一个通用的拦截器，所有微服务引入通用模块，拦截器将用户信息保存在<code>ThreadLocal</code>.</p>
+<p>在公共模块中，添加<code>interceptors</code>获得网关传递过来的用户信息id，<code>spring-mvc</code>的配置，还要添加好<code>interceptors</code>,但由于网关内部底层不是由<code>spring-mvc</code>实现，所需要添加配置条件注解，借助<code>springmvc</code>核心类<code>DispatcherServlet</code>。排除掉无法在网关模块中自动装配的错误。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserInfoInterceptor</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">HandlerInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">preHandle</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">userInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getHeader</span><span class="p">(</span><span class="s">&#34;user-info&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">StrUtil</span><span class="p">.</span><span class="na">isNotBlank</span><span class="p">(</span><span class="n">userInfo</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">UserContext</span><span class="p">.</span><span class="na">setUser</span><span class="p">(</span><span class="n">Long</span><span class="p">.</span><span class="na">parseLong</span><span class="p">(</span><span class="n">userInfo</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterCompletion</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">,</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">HandlerInterceptor</span><span class="p">.</span><span class="na">super</span><span class="p">.</span><span class="na">afterCompletion</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">handler</span><span class="p">,</span><span class="w"> </span><span class="n">ex</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@ConditionalOnClass</span><span class="p">(</span><span class="n">DishpatcherServlet</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></div><h5 id="用户间传递信息openfeign">用户间传递信息OpenFeign<a hidden class="anchor" aria-hidden="true" href="#用户间传递信息openfeign">#</a></h5>
+<p>使用OpenFeign提供的拦截器接口，建立拦截器，加入并保存请求头中的用户信息。<code>RequestInterceptors</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DefaultFeignConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 设置日志等级
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">Level</span><span class="w"> </span><span class="nf">fullfeignLoggerLevel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="k">return</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">Level</span><span class="p">.</span><span class="na">FULL</span><span class="p">;}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">RequestInterceptor</span><span class="w"> </span><span class="nf">userInfoRequestInterceptor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RequestInterceptor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="n">RequestTemplate</span><span class="w"> </span><span class="n">requestTemplate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="c1">// 时刻注意空指针问题</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">Long</span><span class="w"> </span><span class="n">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UserContext</span><span class="p">.</span><span class="na">getUser</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">userId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="n">requestTemplate</span><span class="p">.</span><span class="na">header</span><span class="p">(</span><span class="s">&#34;user-info&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">userId</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * fallbackFactory需要的注入为bean
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * @return
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ItemClientFallbackFactory</span><span class="w"> </span><span class="nf">itemClientFallbackFactory</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ItemClientFallbackFactory</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h4 id="总结微服务项目登录以及用户信息传递解决方案">总结：微服务项目登录以及用户信息传递解决方案<a hidden class="anchor" aria-hidden="true" href="#总结微服务项目登录以及用户信息传递解决方案">#</a></h4>
+<ul>
+<li>网关获取用户信息
+<ul>
+<li>使用网关提供的<code>GlobalFilter</code>实施登录检验，和保存请求头。</li>
+</ul>
+</li>
+<li>网关向微服务内部传递用户信息
+<ul>
+<li>使用<code>HandlerInterceptor</code>也就是SpringMVC配置拦截器，将网关发来的请求头中携带的用户信息，保存到<code>ThreadLocal</code></li>
+<li>在所有微服务中的公共类进行拦截器配置。（注意要排除掉网关模块的影响）</li>
+</ul>
+</li>
+<li>微服务之间传递用户信息
+<ul>
+<li>使用OpenFeign提供的<code>RequestInterceptor</code>拦截器，将本地<code>ThreadLocal</code>中的用户信息，添加到请求头中发出</li>
+<li>接收请求的微服务，通过MVC拦截器，保存用户信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置管理">配置管理<a hidden class="anchor" aria-hidden="true" href="#配置管理">#</a></h3>
+<p>微服务读取<strong>配置管理服务</strong>中的配置，<strong>共享</strong>配置</p>
+<h4 id="配置共享">配置共享<a hidden class="anchor" aria-hidden="true" href="#配置共享">#</a></h4>
+<p>nacos实现配置共享</p>
+<h4 id="配置热更新">配置热更新<a hidden class="anchor" aria-hidden="true" href="#配置热更新">#</a></h4>
+<ul>
+<li>nacos需创建一个和微服务名有关的配置文件<code>cart-service-local.yml</code></li>
+<li>创建一个<code>ConfigurationProperties</code>利用类，在代码中更新写死的需要热改变的配置文件</li>
+</ul>
+<h4 id="动态路由">动态路由<a hidden class="anchor" aria-hidden="true" href="#动态路由">#</a></h4>
+<p>动态路由配置</p>
+<ul>
+<li>添加监听器</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequiredArgsConstructor</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Slf4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DynamicRouteLoader</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">NacosConfigManager</span><span class="w"> </span><span class="n">nacosConfigManager</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">dataId</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s">&#34;gateway-routes.json&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s">&#34;DEFAULT_GROUP&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">RouteDefinitionWriter</span><span class="w"> </span><span class="n">routeDefinitionWriter</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">routeIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostConstruct</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initRouteConfigListener</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NacosException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 项目初始化的时候先拉取配置文件的同时添加一个监听器</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">configInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nacosConfigManager</span><span class="p">.</span><span class="na">getConfigService</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">getConfigAndSignListener</span><span class="p">(</span><span class="n">dataId</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">5000</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Listener</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="kd">public</span><span class="w"> </span><span class="n">Executor</span><span class="w"> </span><span class="nf">getExecutor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">receiveConfigInfo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">configInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="c1">// 监听到配置的变更，此时更新路由表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&#34;监听到配置的变更，此时更新路由表....&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="n">updateConfigInfo</span><span class="p">(</span><span class="n">configInfo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">});</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 第一次拉取到配置的时候也要更新路由表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">updateConfigInfo</span><span class="p">(</span><span class="n">configInfo</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">updateConfigInfo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">configInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 解析配置信息，转换为路由RouteDefinition</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 传过来的应该是列表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">RouteDefinition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">routeDefinitions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JSONUtil</span><span class="p">.</span><span class="na">toList</span><span class="p">(</span><span class="n">configInfo</span><span class="p">,</span><span class="w"> </span><span class="n">RouteDefinition</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 更新路由列表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 首先先删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">routeId</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">routeIds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">routeDefinitionWriter</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">Mono</span><span class="p">.</span><span class="na">just</span><span class="p">(</span><span class="n">routeId</span><span class="p">)).</span><span class="na">subscribe</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// 清除记录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">routeIds</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">RouteDefinition</span><span class="w"> </span><span class="n">routeDefinition</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">routeDefinitions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 更新路由表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">routeDefinitionWriter</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">Mono</span><span class="p">.</span><span class="na">just</span><span class="p">(</span><span class="n">routeDefinition</span><span class="p">)).</span><span class="na">subscribe</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">// 记录路由id，便于下次更新时进行删除</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">routeIds</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">routeDefinition</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>nacos添加路由配置文件（因为无法对yml文件进行解析，使用json进行配置）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;item&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;predicates&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Path&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;_genkey_0&#34;</span><span class="p">:</span><span class="s2">&#34;/items/**&#34;</span><span class="p">,</span> <span class="nt">&#34;_genkey_1&#34;</span><span class="p">:</span><span class="s2">&#34;/search/**&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;filters&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;lb://item-service&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;cart&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;predicates&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Path&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;_genkey_0&#34;</span><span class="p">:</span><span class="s2">&#34;/carts/**&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;filters&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;lb://cart-service&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;user&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;predicates&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Path&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;_genkey_0&#34;</span><span class="p">:</span><span class="s2">&#34;/users/**&#34;</span><span class="p">,</span> <span class="nt">&#34;_genkey_1&#34;</span><span class="p">:</span><span class="s2">&#34;/addresses/**&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;filters&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;lb://user-service&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;trade&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;predicates&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Path&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;_genkey_0&#34;</span><span class="p">:</span><span class="s2">&#34;/orders/**&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;filters&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;lb://trade-service&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;pay&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;predicates&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Path&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&#34;_genkey_0&#34;</span><span class="p">:</span><span class="s2">&#34;/pay-orders/**&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;filters&#34;</span><span class="p">:</span> <span class="p">[],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;lb://pay-service&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><h3 id="服务保护和分布式事务">服务保护和分布式事务<a hidden class="anchor" aria-hidden="true" href="#服务保护和分布式事务">#</a></h3>
+<h4 id="雪崩问题">雪崩问题<a hidden class="anchor" aria-hidden="true" href="#雪崩问题">#</a></h4>
+<ul>
+<li>微服务相互调用，服务提供者出现了故障或阻塞。</li>
+<li>服务调用者没有做好异常处理，导致自身故障。</li>
+<li>调用链中的所有服务级联失败，导致整个集群故障。</li>
+</ul>
+<p>解决（<strong>服务保护</strong>）方案</p>
+<ul>
+<li>请求限流（保护提供者）</li>
+<li><strong>线程隔离</strong>（保护消费者）</li>
+<li>服务熔断（监控已发出的请求，若该接口异常请求比例或慢调用比例，超出了设定的阈值，直接熔断该业务接口）
+<ul>
+<li>熔断期间，全部走<code>fallback </code>逻辑，返回。</li>
+</ul>
+</li>
+</ul>
+<h4 id="sentinel">Sentinel<a hidden class="anchor" aria-hidden="true" href="#sentinel">#</a></h4>
+<p>簇点链路: 一系列的调用的接口，形成的一条链路。</p>
+<p>实现限流规则：在簇点链路中，对每一个接口更改流控中的<strong>单机规则</strong>。</p>
+<p>实现服务熔断：需要将<code>FeignClient</code>中的作为Sentinel的簇点资源（配置Fallback）。</p>
+<p>两种方式：</p>
+<ul>
+<li>
+<p>FallbackFactory（可以处理远程调用）</p>
+</li>
+<li>
+<p>FallbackClass（无法处理远程调用）</p>
+</li>
+<li>
+<p>自定义类需要的client的<code>FallbackFactory</code></p>
+</li>
+</ul>
+<h5 id="服务熔断">服务熔断<a hidden class="anchor" aria-hidden="true" href="#服务熔断">#</a></h5>
+<h6 id="断路器">断路器<a hidden class="anchor" aria-hidden="true" href="#断路器">#</a></h6>
+<p>由断路器记录统计服务调用的异常比例和慢请求比例，超过一定阈值开始熔断该服务。</p>
+<p>内部由三种状态形成的状态机， <code>Closed</code> <code>Open</code> <code>Half-Open</code></p>
+<ul>
+<li>当熔断时间到 <code>Open</code> -&gt; <code>Half-Open</code> 放行一次请求，根据统计请求状态转换到相应的状态。</li>
+</ul>
+<h4 id="分布式事务">分布式事务<a hidden class="anchor" aria-hidden="true" href="#分布式事务">#</a></h4>
+<h5 id="seata架构">Seata架构<a hidden class="anchor" aria-hidden="true" href="#seata架构">#</a></h5>
+<ul>
+<li><strong>TC</strong>(Transaction Cooridinator)事务协调者，维护全局的和分支的事务的状态，协调全局事务提交或者回滚</li>
+<li>TM(Transaction Manager)事务管理器 ：告知TC，指明全局事务的范围，开始全局事务、提交或回滚全局事务。</li>
+<li>RM(Resource Manager) 资源管理器：管理全局事务下的分支事务，与TC协调以注册分支事务和报告分支事务的状态。</li>
+</ul>
+<p>Seata本身就是一个微服务，将其配置修改，docker部署之后，就会注册到nacos服务列表中一起集中管理。</p>
+<h5 id="xa模式">XA模式<a hidden class="anchor" aria-hidden="true" href="#xa模式">#</a></h5>
+<p>XA，一种分布式事务处理标准。（<strong>两阶段提交</strong>）</p>
+<h6 id="一阶段">一阶段<a hidden class="anchor" aria-hidden="true" href="#一阶段">#</a></h6>
+<ul>
+<li>TM报告TC开启全局事务。</li>
+<li>TM开始调用各分支。</li>
+<li>RM向TC注册分支事务。</li>
+<li>分支微服务执行业务SQL。</li>
+<li>分支（执行结束之后）报告事务状态。</li>
+</ul>
+<h6 id="二阶段">二阶段<a hidden class="anchor" aria-hidden="true" href="#二阶段">#</a></h6>
+<ul>
+<li>TM报告TC（所有分支事务结束）全局事务结束。</li>
+<li>TC检查各分支事务状态。向各分支发送指令（<strong>提交/回滚</strong>）</li>
+</ul>
+<h6 id="优点">优点<a hidden class="anchor" aria-hidden="true" href="#优点">#</a></h6>
+<ul>
+<li>满足事务的强一致性，满足ACID原则（Atomicity Consistency Isolation Durability）</li>
+<li>实现简单</li>
+</ul>
+<h6 id="缺点">缺点<a hidden class="anchor" aria-hidden="true" href="#缺点">#</a></h6>
+<ul>
+<li>因为在一阶段需要<strong>锁定数据库资源</strong>，（各分支是串行执行的）等待到二阶段才会释放资源。</li>
+<li>依赖于关系型数据库的实现事务.</li>
+</ul>
+<h5 id="at模式">AT模式<a hidden class="anchor" aria-hidden="true" href="#at模式">#</a></h5>
+<h6 id="一阶段-1">一阶段<a hidden class="anchor" aria-hidden="true" href="#一阶段-1">#</a></h6>
+<ul>
+<li>RM注册分支事务</li>
+<li><strong>RM记录undo-log（数据快照）</strong></li>
+<li>RM执行业务sql并提交事务。</li>
+<li>RM向TC报告事务状态</li>
+</ul>
+<h6 id="二阶段-1">二阶段<a hidden class="anchor" aria-hidden="true" href="#二阶段-1">#</a></h6>
+<ul>
+<li>
+<p>TC收到TM全局事务完成信号。</p>
+</li>
+<li>
+<p>TC检查分支事务状态。（若需要回滚，<strong>恢复快照数据</strong>，成功，删除快照）。</p>
+</li>
+<li>
+<p><strong>创建一个更新前后数据库快照，不用等待各自业务sql的执行完成后释放锁资源。</strong></p>
+</li>
+<li>
+<p><strong>最终一致性</strong>：只有在更新恢复快照之前，会有短暂的时间出现数据的不一致性。</p>
+</li>
+</ul>
+<h5 id="at-vs-xa">AT vs XA<a hidden class="anchor" aria-hidden="true" href="#at-vs-xa">#</a></h5>
+<ul>
+<li>AT使用数据快照实现数据回滚，XA模式依赖于数据库机制实现回滚。</li>
+<li>XA一阶段不提交事务，锁定资源，AT一阶段提交事务，不锁定资源。</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="//localhost:1313/tags/%E5%90%8E%E7%AB%AF/">后端</a></li>
+    </ul>
+
+<ul class="share-buttons">
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="//localhost:1313/">xingpiaoliang&#39;s</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

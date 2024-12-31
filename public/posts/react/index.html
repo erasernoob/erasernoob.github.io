@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>The second journey to React | xingpiaoliang&#39;s</title>
+<meta name="keywords" content="前端">
+<meta name="description" content="Learn react reactively.">
+<meta name="author" content="">
+<link rel="canonical" href="//localhost:1313/posts/react/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="//localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="//localhost:1313/posts/react/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="//localhost:1313/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="//localhost:1313/archives" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="//localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.org" title="example.org">
+                    <span>example.org</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      The second journey to React
+    </h1>
+    <div class="post-description">
+      Learn react reactively.
+    </div>
+    <div class="post-meta"><span title='2024-12-31 09:53:14 +0800 CST'>December 31, 2024</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="the-static-pages">The Static Pages<a hidden class="anchor" aria-hidden="true" href="#the-static-pages">#</a></h2>
+<!-- raw HTML omitted -->
+<p>The Fundamental for the first Project</p>
+<ul>
+<li>composable</li>
+<li>Declarative</li>
+<li>createRoot().render()</li>
+<li>the <code>&lt;h1&gt;Header&lt;/h1&gt;</code> in the jsx is a object</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="nb">Object</span> <span class="p">{</span><span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;h1&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">ref</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">props</span><span class="o">:</span> <span class="p">{</span><span class="nx">children</span><span class="o">:</span> <span class="s1">&#39;Header&#39;</span><span class="p">}}</span>
+</span></span></code></pre></div><h2 id="props">Props<a hidden class="anchor" aria-hidden="true" href="#props">#</a></h2>
+<ul>
+<li>React Can&rsquo;s render the Object exclude the HTML element object. So use  the <strong>array.map()</strong> to return a components array use the props raw data.</li>
+</ul>
+<h3 id="uniquekey">uniqueKey<a hidden class="anchor" aria-hidden="true" href="#uniquekey">#</a></h3>
+<p>Must pass a key named <code>key</code> as the unique props.</p>
+<h3 id="three-different-way-to-pass-the-object-prop"><strong>Three different way to pass the object prop</strong><a hidden class="anchor" aria-hidden="true" href="#three-different-way-to-pass-the-object-prop">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">entryElements</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">m</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Entry</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">m</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="err">//</span> <span class="na">key</span><span class="o">=</span><span class="na">index</span>
+</span></span><span class="line"><span class="cl">        <span class="na">img</span><span class="o">=</span><span class="na">d.img</span>
+</span></span><span class="line"><span class="cl">        <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span> <span class="c1">// get a array of components
+</span></span></span></code></pre></div><h3 id="pass-down-the-entire-object-as-the-props">Pass down the entire Object as the props<a hidden class="anchor" aria-hidden="true" href="#pass-down-the-entire-object-as-the-props">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">entryElements</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">m</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Entry</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">m</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="err">//</span> <span class="na">key</span><span class="o">=</span><span class="na">index</span>
+</span></span><span class="line"><span class="cl">        <span class="na">entry</span><span class="o">=</span><span class="p">{</span><span class="nx">m</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span> <span class="c1">// get a array of components
+</span></span></span></code></pre></div><h3 id="use-the-spread-object--method-to-pass-props">Use the spread object  method to pass props<a hidden class="anchor" aria-hidden="true" href="#use-the-spread-object--method-to-pass-props">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">entryElements</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">entry</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Entry</span> 
+</span></span><span class="line"><span class="cl">        <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">entry</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="err">//</span> <span class="na">key</span><span class="o">=</span><span class="na">index</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="na">...entry</span><span class="p">}</span> <span class="err">//</span> <span class="na">convert</span> <span class="na">the</span> <span class="na">object</span><span class="err">&#39;</span><span class="na">s</span> <span class="na">key</span> <span class="na">to</span> <span class="na">single</span> <span class="na">props</span>
+</span></span><span class="line"><span class="cl">        <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span> <span class="c1">// get a array of components
+</span></span></span></code></pre></div><h2 id="statedynamic-web-application">State(Dynamic web application)<a hidden class="anchor" aria-hidden="true" href="#statedynamic-web-application">#</a></h2>
+<h3 id="formdata">FormData<a hidden class="anchor" aria-hidden="true" href="#formdata">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="c1">// The way to handle the submit action in the react 19
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmit</span><span class="p">}</span> <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">defaultVlue</span><span class="o">=</span><span class="s">&#34;1490910337@main.com&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;email&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">handleSubmit</span> <span class="o">=</span> <span class="p">(</span><span class="nx">formData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">data</span>  <span class="o">=</span> <span class="nx">formData</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>The above code will do those thing automatically</strong></p>
+<ul>
+<li><code>preventDefault</code> prevent the default behavior for the form submission</li>
+<li><code>form.reset()</code></li>
+<li>Passing the formData object directly</li>
+<li>Make this become more declarative</li>
+</ul>
+<p><strong>radio type input and the checkbox</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">getData</span> <span class="o">=</span> <span class="p">(</span><span class="nx">formData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// get all the checkbox value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">formData</span><span class="p">.</span><span class="nx">getAll</span><span class="p">(</span><span class="s1">&#39;checkBoxValue&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// when deal with the mutible value like the checbox and the select option, need set all the options a distinct value from each other
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">label</span> <span class="na">htmlFor</span><span class="o">=</span><span class="s">&#34;favColor&#34;</span><span class="p">&gt;</span><span class="nx">What</span> <span class="nx">is</span> <span class="nx">your</span> <span class="nx">favorite</span> <span class="nx">color</span><span class="o">?</span><span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;favColor&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;favColor&#34;</span> <span class="na">defaultValue</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">required</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;&#34;</span> <span class="na">disabled</span><span class="p">&gt;</span><span class="o">--</span> <span class="nx">Choose</span> <span class="nx">a</span> <span class="nx">color</span> <span class="o">--</span><span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p><strong>Use the <code>Object.fromEntries</code> to get the whole formdata</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">signUp</span><span class="p">(</span><span class="nx">formData</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">formData</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// also it still needs to getAll to get the whole checkbox array value
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">formData</span><span class="p">.</span><span class="nx">getAll</span><span class="p">(</span><span class="s1">&#39;checkboxName&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></div><h3 id="the-dataflow-in-the-react">The DataFlow in the React<a hidden class="anchor" aria-hidden="true" href="#the-dataflow-in-the-react">#</a></h3>
+<p><strong>Passing Data to component</strong>: Just like the tree, there are sibling components and the parent components,. And in React <strong>DataFlow can only pass the data from top to down (parent to children)</strong>. So there should be the third party like <strong>Redux</strong> or <strong>Context</strong>, to pass the data around the react.</p>
+<h3 id="use-the-callback-function-to-control-the-components-data-flow">Use the callback function to control the Components&rsquo; data flow<a hidden class="anchor" aria-hidden="true" href="#use-the-callback-function-to-control-the-components-data-flow">#</a></h3>
+<p>Restore the main source in on parent  rather than pass the <code>pad.id</code> to the children components.</p>
+<ul>
+<li>React state can be a good maintainer to storage the information between others&rsquo; state change, that the information won&rsquo;t disappear when the page re-render</li>
+</ul>
+<h2 id="outside-effect">(Out)Side Effect<a hidden class="anchor" aria-hidden="true" href="#outside-effect">#</a></h2>
+<ul>
+<li>Controlled components</li>
+<li>Functional programming
+<ul>
+<li>Immutable</li>
+<li>Pure Function</li>
+</ul>
+</li>
+<li>(out)side effects</li>
+</ul>
+<blockquote>
+<ul>
+<li>Those thing that react does not Control on it&rsquo;s own.</li>
+<li>To escape from the React ecosystem, need to interactive with outside world.</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(</span><span class="nx">setup</span><span class="p">(</span><span class="nx">callback</span> <span class="kd">function</span><span class="p">),</span> <span class="nx">dependencies</span><span class="o">?</span><span class="p">)</span> <span class="c1">// only after the DOM was rendered, then the callback run           
+</span></span></span></code></pre></div><p>By <strong>Default</strong> the callback function  will run every single(so well run at the first time) time when the dom is rerendered , and the <code>dependecies</code> will be a <strong>state array</strong>, <strong>only when the dependency change,</strong> <strong>the function run.</strong></p>
+<h2 id="useeffect-cleanup-function"><code>useEffect</code> cleanup function<a hidden class="anchor" aria-hidden="true" href="#useeffect-cleanup-function">#</a></h2>
+<p>Where is a UseEffect callback function, React will automatically receive a function called &ldquo;cleanUp function&rdquo;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="nx">useEffect</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="p">.....</span>
+</span></span><span class="line"><span class="cl">   <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="c1">// this is the useEffect clean up function when this component is unmounted
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><h2 id="useref">UseRef()<a hidden class="anchor" aria-hidden="true" href="#useref">#</a></h2>
+<blockquote>
+<p>Ref can be mutated directly</p>
+<p>Changing them doesn&rsquo;t cause a re-render</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">recipeSelection</span> <span class="o">=</span> <span class="nx">useRef</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// ref can only add to the normal html elements
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">&lt;</span><span class="nt">input</span> <span class="na">ref</span><span class="o">=</span><span class="p">{</span><span class="nx">recipeSelection</span><span class="p">}</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">recipeSelection</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">{</span><span class="nx">current</span><span class="o">:</span> <span class="kc">null</span><span class="p">}</span>
+</span></span></code></pre></div><h3 id="controlled-components">Controlled Components<a hidden class="anchor" aria-hidden="true" href="#controlled-components">#</a></h3>
+<h3 id="css">CSS<a hidden class="anchor" aria-hidden="true" href="#css">#</a></h3>
+<ul>
+<li>padding-block, margin-block can edit the bottom and top</li>
+<li>em -&gt; 1em = parent&rsquo;font size (parent = 16px, 1em = 16px)</li>
+<li>1rem -&gt; stands for &lsquo;root em&rsquo; root element&rsquo;s(the <!-- raw HTML omitted -->) size as the standard</li>
+<li>to edit the bullet of the li use the typically pseudo element <code>li::marker</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* the pseudo selector for the bullet before the li&#39;s context  */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">content-item</span><span class="p">::</span><span class="nd">marker</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">color</span><span class="p">:</span> <span class="mh">#61DAFB</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* rem stands for the root em */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">rem</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li>box-sizing
+<ul>
+<li>border-box: width = border + padding</li>
+<li>content-box(default): width + border + padding = WIDTH</li>
+</ul>
+</li>
+<li>flex
+<ul>
+<li>align-items: center (make the box&rsquo;s element align by center)</li>
+</ul>
+</li>
+<li>100% = parent&rsquo;s elements&rsquo; size</li>
+<li><strong>Add the background-image</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl">  <span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">&#34;./assets/react-logo-half.png&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">background-repeat</span><span class="o">:</span> <span class="nt">no-repeat</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">background-position</span><span class="o">:</span> <span class="nt">right</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">background-position</span><span class="o">:</span> <span class="o">(</span><span class="nt">x</span><span class="o">,</span> <span class="nt">y</span><span class="o">));</span>
+</span></span></code></pre></div><h2 id="flexbox">FlexBox<a hidden class="anchor" aria-hidden="true" href="#flexbox">#</a></h2>
+<p>FlexBox should neet a container to wrapper the whole items become the parent</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">justify-content</span><span class="o">:</span> <span class="nt">sapce-between</span> <span class="o">:</span> <span class="o">//</span> <span class="nt">use</span> <span class="nt">the</span> <span class="nt">whole</span> <span class="nt">availiable</span> <span class="nt">space</span> <span class="nt">put</span> <span class="nt">it</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">middle</span>
+</span></span><span class="line"><span class="cl"><span class="nt">-</span> <span class="nt">flex-start</span><span class="o">(</span><span class="nt">default</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nt">-</span> <span class="nt">flex-end</span>
+</span></span><span class="line"><span class="cl"><span class="nt">-</span> <span class="nt">center</span>
+</span></span><span class="line"><span class="cl"><span class="nt">-</span> <span class="nt">space-around</span> <span class="o">(</span><span class="nt">equal</span> <span class="nt">space</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nt">flex-direction</span><span class="o">:</span> <span class="nt">column</span> <span class="o">/</span> <span class="nt">row</span><span class="o">(</span><span class="nt">default</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nt">align-items</span><span class="o">(</span><span class="nt">decide</span> <span class="nt">the</span> <span class="nt">vertical</span><span class="o">):</span> <span class="o">(</span><span class="nt">used</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">container</span><span class="o">(</span><span class="nt">parent</span><span class="o">))</span> <span class="nt">stretch</span><span class="o">(</span><span class="nt">defalt</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nt">align-selfs</span><span class="o">:</span> <span class="o">(</span><span class="nt">used</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">container</span><span class="err">&#39;</span><span class="nt">s</span> <span class="nt">children</span><span class="o">)</span>
+</span></span></code></pre></div><ul>
+<li>flex = flex-grow flex-shrink flex-basis</li>
+<li>flex = 1 (width = allWidth / itemNumbers)</li>
+</ul>
+<h3 id="flex-direction">flex-direction<a hidden class="anchor" aria-hidden="true" href="#flex-direction">#</a></h3>
+<h3 id="flex-wrap-nodefault">flex-wrap: no(default)<a hidden class="anchor" aria-hidden="true" href="#flex-wrap-nodefault">#</a></h3>
+<p>Only allowed one row</p>
+<h3 id="flex">flex<a hidden class="anchor" aria-hidden="true" href="#flex">#</a></h3>
+<p>flex = 1 == flex shrink  = flex-grow = 1, flex-basis = 0 = flex = 1 1 0</p>
+<p>flexbasis: a way to set the base width of the flex children</p>
+<p>flexgrow: element will grow while the window&rsquo;s size bigger</p>
+<p>flexshrink: the opposite from the flex grow</p>
+<h3 id="source-order">source order<a hidden class="anchor" aria-hidden="true" href="#source-order">#</a></h3>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="//localhost:1313/tags/%E5%89%8D%E7%AB%AF/">前端</a></li>
+    </ul>
+
+<ul class="share-buttons">
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="//localhost:1313/">xingpiaoliang&#39;s</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

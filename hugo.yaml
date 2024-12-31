@@ -1,0 +1,64 @@
+baseURL: /
+languageCode: en-us
+title:  xingpiaoliang's
+description: "Want a "
+theme: ["PaperMod"]
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+params:
+  showShareButtons: true
+  ShareButtons: ["github", "applemusic"] # To customize which share buttons to be enabled on page
+
+  profileMode:
+    enabled: true
+    title: "Piaoliang's Cabin" # optional default will be site title
+    subtitle: "A Totally Dreamer :)"
+    imageUrl: "/avtar.jpg"
+    imageWidth: 120px # custom size
+    imageHeight: 120px # custom size
+    buttons:
+      - name: 时间银河
+        url: "archives"
+      # - name: Github
+        # url: "https://github.com/"
+
+  socialIcons: # optional
+    # - name: ""
+      # url: "<link>"
+    - name: "applemusic"
+      url: "https://music.apple.com/us/album/%E6%88%91%E8%A6%81%E7%9A%84%E5%B9%B8%E7%A6%8F/298837646"
+    - name: "github"
+      url: "https://github.com/erasernoob"
+    # - name: "qq"
+    #   url: "<link2>"
+    - name: "reddit"
+      url: "http://www.reddit.com/user/00erasernoob7"
+    - name: "stackoverflow"
+      url: "https://stackoverflow.com/users/24632874/erasernob"
+    
+# side bar menu
+menu:
+  main:
+    - identifier: archives
+      name: archives
+      url: archives
+      weight: 10
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+    - identifier: example
+      name: example.org
+      url: https://example.org
+      weight: 30

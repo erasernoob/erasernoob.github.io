@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>后端 on xingpiaoliang&#39;s</title>
+    <link>//localhost:1313/tags/%E5%90%8E%E7%AB%AF/</link>
+    <description>Recent content in 后端 on xingpiaoliang&#39;s</description>
+    <generator>Hugo -- 0.140.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Dec 2024 10:42:24 +0800</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/%E5%90%8E%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微服务学习笔记</title>
+      <link>//localhost:1313/posts/springcloud/</link>
+      <pubDate>Tue, 03 Dec 2024 10:42:24 +0800</pubDate>
+      <guid>//localhost:1313/posts/springcloud/</guid>
+      <description>Learn react reactively.</description>
+    </item>
+  </channel>
+</rss>
