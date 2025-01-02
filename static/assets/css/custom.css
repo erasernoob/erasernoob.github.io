@@ -1,0 +1,48 @@
+.toc {
+  position: fixed;
+  left: 20px;
+  top: 100px;
+  width: 200px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* 网站标题艺术字样式 */
+.site-title {
+  font-family: 'Georgia', serif;   /* 更改为艺术字风格字体 */
+  font-size: 4rem;                 /* 调整字体大小 */
+  color: #ff5722;                  /* 设置字体颜色 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* 添加阴影效果 */
+  text-transform: uppercase;       /* 大写字母 */
+  letter-spacing: 2px;             /* 字间距 */
+  padding: 10px 20px;
+}
+
+/* 渐变艺术字效果 */
+.site-title.gradient {
+  background: linear-gradient(90deg, #ff8a00, #e52e71, #4a90e2);
+  background-size: 200% 200%;
+  animation: gradient-flow 3s infinite linear;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+.toc a {
+  text-decoration: none;
+  color: #333;
+}
+
+.toc a:hover {
+  color: #007bff;
+}

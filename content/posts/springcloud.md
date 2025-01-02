@@ -1,10 +1,10 @@
 ---
-title : '微服务学习笔记'
+title : 'SpringCloud及微服务学习笔记'
 date : 2024-12-03T10:42:24+08:00
 layout: "post"
 images: 
   - "/avatar.jpg"   # 设置封面图
-description: "Learn react reactively."     
+description: "springCloud学习记录"     
 categories: ["技术笔记"]
 tags: ["后端"]
 draft: false

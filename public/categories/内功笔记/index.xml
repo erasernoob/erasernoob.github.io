@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>内功笔记 on xingpiaoliang&#39;s</title>
+    <link>https://erasernoob.github.io/categories/%E5%86%85%E5%8A%9F%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 内功笔记 on xingpiaoliang&#39;s</description>
+    <generator>Hugo -- 0.140.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Jan 2025 12:44:29 +0800</lastBuildDate>
+    <atom:link href="https://erasernoob.github.io/categories/%E5%86%85%E5%8A%9F%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计算机网络基础知识梳理</title>
+      <link>https://erasernoob.github.io/posts/cs-internet-note/</link>
+      <pubDate>Thu, 02 Jan 2025 12:44:29 +0800</pubDate>
+      <guid>https://erasernoob.github.io/posts/cs-internet-note/</guid>
+      <description>the note for the final exam</description>
+    </item>
+  </channel>
+</rss>

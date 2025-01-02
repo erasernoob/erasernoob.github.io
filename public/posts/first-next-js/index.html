@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Next.js初体验(未完结) | xingpiaoliang&#39;s</title>
+<meta name="keywords" content="前端, fullstack">
+<meta name="description" content="Next.js 学习向
+全栈框架Next.js的官网学习项目记录。
+CSS &amp;
+Image and Fonts
+Layout Shifting是作为谷歌在评估一个页面的性能的指标，而自定义字体或者是image都会造成这样的布局偏移的影响。所以Next提供了一个在build之前自动下载自定义字体，以及自动host到下载好的字体并进行展示，避免了在渲染的时候，花费多余的时间来连接到和加载外部的静态资源。
+
+
+在app/ui/font.tsx在这个目录中定义相关的要使用的自定义Font，并在其他的page页面import进行引入使用
+import { Inter, Lusitana } from &#39;next/font/google&#39;
+
+export const inter = Inter({ subsets: [&#39;latin&#39;] })
+export const lusitana = Lusitana({
+    weight: &#39;700&#39;,
+    subsets: [
+        &#39;latin&#39;
+    ]
+})
+
+
+同时，image也是连接静态资源，影响性能的一种，所以Next同时提供了Image标签，直接进行使用。
+		&lt;Image
+            src={&#39;/hero-mobile.png&#39;}
+            width={560}
+            height={620}
+            className=&#39;block md:hidden&#39;
+            alt=&#39;Screenshots of the dashboard project showing destop version&#39;
+          &gt;&lt;/Image&gt;
+Creating Layouts and Pages
+在Next.js中，路由的方式，是通过app/下的文件夹来实现的，在主文件夹下，新建一个文件夹，就是路径中的一个新的路由。在每一个文件夹中page.tsx文件扮演者该路由显示的页面。
+app/dashboard/page.tsx
+export default function Page() {
+    return &lt;p&gt;Dashboard Page&lt;/p&gt;
+}
+而每一个路由下的layout.tsx则扮演者，对当前路由下包括所有的子路由（子文件夹）共享一套排版配置。同时，在主工作文件夹中，存在着一个RootLayout
+import &#39;@/app/ui/global.css&#39;
+import { inter } from &#39;app/ui/fonts&#39;;
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    &lt;html lang=&#34;en&#34;&gt;
+      &lt;body className={`${inter.className} antialiased`}&gt;{children}&lt;/body&gt;
+    &lt;/html&gt;
+  );
+}
+所有在RootLayout下添加的UI组件都会在整个项目中的整个Page文件中生效。
+
+Use it to Modify the &lt;html&gt;  and &lt;body&gt; tags
+Add metadata on it
+
+app/dashboard/layout.tsx">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/first-next-js/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/first-next-js/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/erasernoob" title="Github">
+                    <span>Github</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Next.js初体验(未完结)
+    </h1>
+    <div class="post-meta"><span title='2024-12-15 17:37:00 +0800 CST'>December 15, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;528 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#nextjs-%e5%ad%a6%e4%b9%a0%e5%90%91" aria-label="Next.js 学习向">Next.js 学习向</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#css-" aria-label="CSS &amp;">CSS &amp;</a></li></ul>
+                    
+                <li>
+                    <a href="#image-and-fonts" aria-label="Image and Fonts">Image and Fonts</a></li>
+                <li>
+                    <a href="#creating-layouts-and-pages" aria-label="Creating Layouts and Pages">Creating Layouts and Pages</a><ul>
+                        
+                <li>
+                    <a href="#%e8%a7%a3%e6%9e%84%e8%b5%8b%e5%80%bc" aria-label="解构赋值">解构赋值</a></li></ul>
+                </li>
+                <li>
+                    <a href="#navigating-between-pages" aria-label="Navigating Between Pages">Navigating Between Pages</a><ul>
+                        
+                <li>
+                    <a href="#%e4%bd%bf%e7%94%a8hookusepathname" aria-label="使用HookusePathName()">使用HookusePathName()</a></li>
+                <li>
+                    <a href="#navigate" aria-label="Navigate">Navigate</a></li></ul>
+                </li>
+                <li>
+                    <a href="#setting-up-the-postgres-database" aria-label="Setting up the Postgres database">Setting up the Postgres database</a></li>
+                <li>
+                    <a href="#fetching-data-in-next" aria-label="Fetching Data in Next">Fetching Data in Next</a><ul>
+                        
+                <li>
+                    <a href="#javascript-pattern" aria-label="JavaScript Pattern">JavaScript Pattern</a></li></ul>
+                </li>
+                <li>
+                    <a href="#static-and-dynamic-render" aria-label="Static and Dynamic Render">Static and Dynamic Render</a></li>
+                <li>
+                    <a href="#streaming" aria-label="Streaming">Streaming</a><ul>
+                        
+                <li>
+                    <a href="#routegroup" aria-label="RouteGroup">RouteGroup</a></li>
+                <li>
+                    <a href="#component-stream" aria-label="Component Stream">Component Stream</a></li>
+                <li>
+                    <a href="#stream-in-component-group" aria-label="Stream in Component-Group">Stream in Component-Group</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="nextjs-学习向">Next.js 学习向<a hidden class="anchor" aria-hidden="true" href="#nextjs-学习向">#</a></h1>
+<p>全栈框架<code>Next.js</code>的官网学习项目记录。</p>
+<h3 id="css-">CSS &amp;<a hidden class="anchor" aria-hidden="true" href="#css-">#</a></h3>
+<h2 id="image-and-fonts">Image and Fonts<a hidden class="anchor" aria-hidden="true" href="#image-and-fonts">#</a></h2>
+<p><code>Layout Shifting</code>是作为谷歌在评估一个页面的性能的指标，而自定义字体或者是<code>image</code>都会造成这样的布局偏移的影响。所以Next提供了一个在build之前自动下载自定义字体，以及自动host到下载好的字体并进行展示，避免了在渲染的时候，花费多余的时间来连接到和加载外部的静态资源。</p>
+<ul>
+<li>
+<p>在<code>app/ui/font.tsx</code>在这个目录中定义相关的要使用的自定义Font，并在其他的page页面import进行引入使用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Inter</span><span class="p">,</span> <span class="nx">Lusitana</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;next/font/google&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">inter</span> <span class="o">=</span> <span class="nx">Inter</span><span class="p">({</span> <span class="nx">subsets</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;latin&#39;</span><span class="p">]</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="kr">const</span> <span class="nx">lusitana</span> <span class="o">=</span> <span class="nx">Lusitana</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">weight</span><span class="o">:</span> <span class="s1">&#39;700&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">subsets</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;latin&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>同时，<code>image</code>也是连接静态资源，影响性能的一种，所以Next同时提供了<code>Image</code>标签，直接进行使用。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl">		<span class="p">&lt;</span><span class="nt">Image</span>
+</span></span><span class="line"><span class="cl">            <span class="na">src</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;/hero-mobile.png&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="na">width</span><span class="o">=</span><span class="p">{</span><span class="mi">560</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="na">height</span><span class="o">=</span><span class="p">{</span><span class="mi">620</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="na">className</span><span class="o">=</span><span class="s">&#39;block md:hidden&#39;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">alt</span><span class="o">=</span><span class="s">&#39;Screenshots of the dashboard project showing destop version&#39;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&gt;&lt;/</span><span class="nt">Image</span><span class="p">&gt;</span>
+</span></span></code></pre></div><h2 id="creating-layouts-and-pages">Creating Layouts and Pages<a hidden class="anchor" aria-hidden="true" href="#creating-layouts-and-pages">#</a></h2>
+<p>在<code>Next.js</code>中，路由的方式，是通过<code>app/</code>下的文件夹来实现的，在主文件夹下，新建一个文件夹，就是路径中的一个新的路由。在每一个文件夹中<code>page.tsx</code>文件扮演者该路由显示的页面。</p>
+<p><code>app/dashboard/page.tsx</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Page() {</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Dashboard</span> <span class="nx">Page</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>而每一个路由下的<code>layout.tsx</code>则扮演者，对当前路由下包括所有的子路由（子文件夹）共享一套排版配置。同时，在主工作文件夹中，存在着一个<code>RootLayout</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="s1">&#39;@/app/ui/global.css&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">inter</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;app/ui/fonts&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">RootLayout</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">children</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">children</span>: <span class="kt">React.ReactNode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&#34;en&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">body</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="sb">`</span><span class="si">${</span><span class="nx">inter</span><span class="p">.</span><span class="nx">className</span><span class="si">}</span><span class="sb"> antialiased`</span><span class="p">}&gt;{</span><span class="nx">children</span><span class="p">}&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>所有在<code>RootLayout</code>下添加的UI组件都会在整个项目中的整个<code>Page</code>文件中生效。</p>
+<ul>
+<li>Use it to Modify the <code>&lt;html&gt; </code> and <code>&lt;body&gt;</code> tags</li>
+<li>Add metadata on it</li>
+</ul>
+<p><code>app/dashboard/layout.tsx</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">SideNav</span> <span class="kr">from</span> <span class="s1">&#39;@/app/ui/dashboard/sidenav&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Layout</span><span class="p">({</span> <span class="nx">children</span> <span class="p">}</span> <span class="o">:</span> <span class="p">{</span> <span class="nx">children</span> : <span class="kt">React.ReactNode</span> <span class="p">})</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#39;flex h-screen flex-col md:flex-row md:overflow-hidden&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#39;w-full flex-none md:w-64&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">SideNav</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#39;flex-grow p-6 md:overflow-y-auto md:p-12&#39;</span><span class="p">&gt;{</span> <span class="nx">children</span> <span class="p">}&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>**接收一个<code>Children</code>,作为一个<code>Prop</code>，**这个<code>prop</code>可以是React中的<code>Node</code>，也就是是说，可以是一个 <code>Page</code> ，也可以是其他的<code>layout</code></p>
+<h3 id="解构赋值">解构赋值<a hidden class="anchor" aria-hidden="true" href="#解构赋值">#</a></h3>
+<p>其中，函数的参数部分<code>{ children }: { children: React.ReactNode }</code>，第一个大括号的作用是解构赋值，第二个大括号的作用是<strong>TypeScript中指定参数类型的语法。</strong></p>
+<ul>
+<li>prop： 是父组件，向下传递给子组件的属性。比如<code>prop.name</code> <code>prop.age</code></li>
+</ul>
+<p>这里的解构赋值，作用的对象是组件本身自带的属性<code>prop</code>（r<strong>eact底层自身实现的</strong>)，通过使用<strong>大括号的解构赋值</strong>，在函数中，就可以直接引用<code>children</code> 而不是使用<code>prop.children</code>来访问<code>prop</code>这个对象的<code>children</code>属性。</p>
+<h2 id="navigating-between-pages">Navigating Between Pages<a hidden class="anchor" aria-hidden="true" href="#navigating-between-pages">#</a></h2>
+<h3 id="使用hookusepathname">使用Hook<code>usePathName()</code><a hidden class="anchor" aria-hidden="true" href="#使用hookusepathname">#</a></h3>
+<p>使用该Hook，来标明当前用户所在的<code>page</code>。依靠使用<code>cslx</code>来实现css的动态转变。</p>
+<p>但是如果要使用该Hook，这个hook是<code>client-side hook</code>必须在用户模式下，才能进行使用。<code>'use client'</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="nx">Ecmascript</span> <span class="nx">file</span> <span class="nx">had</span> <span class="nx">an</span> <span class="nx">error</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">1</span> <span class="o">|</span> <span class="c1">// &#39;use client&#39;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">&gt;</span> <span class="mi">2</span> <span class="o">|</span> <span class="kr">import</span> <span class="p">{</span> <span class="nx">usePathname</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;next/navigation&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">|</span>          <span class="o">^^^^^^^^^^^</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">3</span> <span class="o">|</span> <span class="kr">import</span> <span class="nx">clsx</span> <span class="kr">from</span> <span class="s1">&#39;clsx&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">4</span> <span class="o">|</span> <span class="kr">import</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="mi">5</span> <span class="o">|</span>   <span class="nx">UserGroupIcon</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">You</span><span class="err">&#39;</span><span class="nx">re</span> <span class="nx">importing</span> <span class="nx">a</span> <span class="nx">component</span> <span class="nx">that</span> <span class="nx">needs</span> <span class="sb">`usePathname`</span><span class="p">.</span> <span class="nx">This</span> <span class="nx">React</span> <span class="nx">hook</span> <span class="nx">only</span> <span class="nx">works</span> <span class="k">in</span> <span class="nx">a</span> <span class="nx">client</span> <span class="nx">component</span><span class="p">.</span> <span class="nx">To</span> <span class="nx">fix</span><span class="p">,</span> <span class="nx">mark</span> <span class="nx">the</span> <span class="nx">file</span> <span class="p">(</span><span class="nx">or</span> <span class="nx">its</span> <span class="nx">parent</span><span class="p">)</span> <span class="kd">with</span> <span class="nx">the</span> <span class="sb">`&#34;use client&#34;`</span> <span class="nx">directive</span>
+</span></span></code></pre></div><h3 id="navigate">Navigate<a hidden class="anchor" aria-hidden="true" href="#navigate">#</a></h3>
+<p>使用Next提供的<code>&lt;Link /&gt;</code>组件，不需要在点击连接的时候刷新整个屏幕。</p>
+<p>原理：在识别到<code>&lt;Link&gt;</code>组件之后，在后台Next就会自动加载到该连接所连接到的资源，在用户实际点击过后，就会直接获取已经加载好的资源，从而不需要刷新整个屏幕，达到用户友好。</p>
+<h2 id="setting-up-the-postgres-database">Setting up the Postgres database<a hidden class="anchor" aria-hidden="true" href="#setting-up-the-postgres-database">#</a></h2>
+<p>通过在Vercel上部署项目，创建Postgres database，然后将创建好的database生成的<code>.env.local</code>文件，放在项目的根目录中<code>/.env</code>，安装好依赖，就可以通过一个<code>page</code>路由中的<code>route.ts</code>连接数据库，创建表，插入数据&hellip;..</p>
+<h2 id="fetching-data-in-next">Fetching Data in Next<a hidden class="anchor" aria-hidden="true" href="#fetching-data-in-next">#</a></h2>
+<ul>
+<li>当处在用户层也就是，<code>client-side</code>的时候，需要通过加入一个API Layer运行在<code>server-side</code>的API，防止将数据库的secret泄漏。</li>
+<li>如果只是在使用React server-side component 也就是从server端拉取数据，可以跳过API层，直接向数据库发送query请求拉取数据。</li>
+</ul>
+<blockquote>
+<p>If you are using React Server Components (fetching data on the server), you can skip the API layer, and query your database directly without risking exposing your database secrets to the client.</p>
+</blockquote>
+<blockquote>
+<p>思考：既然这是一个全栈框架，那么分成client-side 和 sever-side的component是有道理的，这就类比于，前后端分离式项目。（这样一来就很好理解为什么一定要分类这么严格了）</p>
+</blockquote>
+<h3 id="javascript-pattern">JavaScript Pattern<a hidden class="anchor" aria-hidden="true" href="#javascript-pattern">#</a></h3>
+<p>在Fetching Data的时候，使用Js中的 <code>await</code>，代表的是同步操作，也就是意味着会出现等待阻塞的情况，使用以下Pattern达到同时开始查询每个的操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">invoiceCountPromise</span> <span class="o">=</span> <span class="nx">sql</span><span class="sb">`SELECT COUNT(*) FROM invoices`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">customerCountPromise</span> <span class="o">=</span> <span class="nx">sql</span><span class="sb">`SELECT COUNT(*) FROM customers`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">invoiceStatusPromise</span> <span class="o">=</span> <span class="nx">sql</span><span class="sb">`SELECT
+</span></span></span><span class="line"><span class="cl"><span class="sb">         SUM(CASE WHEN status = &#39;paid&#39; THEN amount ELSE 0 END) AS &#34;paid&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sb">         SUM(CASE WHEN status = &#39;pending&#39; THEN amount ELSE 0 END) AS &#34;pending&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">         FROM invoices`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">invoiceCountPromise</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">customerCountPromise</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">invoiceStatusPromise</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">numberOfInvoices</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">count</span> <span class="o">??</span> <span class="s1">&#39;0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">numberOfCustomers</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">count</span> <span class="o">??</span> <span class="s1">&#39;0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">totalPaidInvoices</span> <span class="o">=</span> <span class="nx">formatCurrency</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">paid</span> <span class="o">??</span> <span class="s1">&#39;0&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">totalPendingInvoices</span> <span class="o">=</span> <span class="nx">formatCurrency</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pending</span> <span class="o">??</span> <span class="s1">&#39;0&#39;</span><span class="p">);</span>
+</span></span></code></pre></div><h2 id="static-and-dynamic-render">Static and Dynamic Render<a hidden class="anchor" aria-hidden="true" href="#static-and-dynamic-render">#</a></h2>
+<blockquote>
+<p>With static rendering, data fetching and rendering happens on the server at build time (when you deploy)</p>
+</blockquote>
+<blockquote>
+<p>With dynamic rendering, content is rendered on the server for each user at <strong>request time</strong> (when the user visits the page)</p>
+</blockquote>
+<h2 id="streaming">Streaming<a hidden class="anchor" aria-hidden="true" href="#streaming">#</a></h2>
+<p>使用流水线（pipeline）方式， fetch data， 加载页面，这样就不会有木桶效应（速度取决于最慢的那个Promise）</p>
+<p>在Next.js中有两种方法实现流式编程，获取数据。</p>
+<ul>
+<li><code>loading.tsx</code> 在 Page 级别</li>
+<li><code>Suspense</code> 对于特定的Component</li>
+</ul>
+<p><code>Loading.tsx</code>作为的是一个特定的next文件，作为一个页面正在加载时作为代替的一个Fallback  UI</p>
+<blockquote>
+<p>is a special Next.js file built on top of Suspense</p>
+</blockquote>
+<h3 id="routegroup">RouteGroup<a hidden class="anchor" aria-hidden="true" href="#routegroup">#</a></h3>
+<p>既然Next中，子文件夹是作为route的依据，所以当想要向当前的主文件(也就是主路由)添加逻辑而不影响到其下面的子路由，这时就可以使用<code>RouteGroup</code>，他提供了一种方法，将文件作为一个逻辑的分组，这样就能够到达该逻辑分组下的文件，只会影响到当前主文件的路由了</p>
+<blockquote>
+<p>Route groups allow you to organize files into logical groups without affecting the URL path structure. When you create a new folder using parentheses <code>()</code>, the name won&rsquo;t be included in the URL path. <strong>So <code>/dashboard/(overview)/page.tsx</code> becomes <code>/dashboard</code>.</strong></p>
+</blockquote>
+<h3 id="component-stream">Component Stream<a hidden class="anchor" aria-hidden="true" href="#component-stream">#</a></h3>
+<p>对于单个的Component的Stream，添加正在加载的回调页面</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">Suspense</span> <span class="na">fallback</span><span class="o">=</span><span class="p">{&lt;</span><span class="nt">RevenueChartSkeleton</span> <span class="p">/&gt;}&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">RevenueChart</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;</span><span class="err">/ Suspense&gt;</span>
+</span></span></code></pre></div><h3 id="stream-in-component-group">Stream in Component-Group<a hidden class="anchor" aria-hidden="true" href="#stream-in-component-group">#</a></h3>
+<p>添加加载页面可以是给一整个页面添加，也可以是给单个Component添加，还可以是给多个Component添加（不过需要重新写一个Wrapper Component 将整个组给包括起来），这些都取决于页面的显示逻辑。 不过:</p>
+<blockquote>
+<p>In general, it&rsquo;s <strong>good practice to move your data fetches down to the components</strong> that need it, and then wrap those components in Suspense.</p>
+</blockquote>
+
+
+  </div>
+  
+
+  
+
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/%E5%89%8D%E7%AB%AF/">前端</a></li>
+      <li><a href="http://localhost:1313/tags/fullstack/">Fullstack</a></li>
+    </ul>
+
+<ul class="share-buttons">
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">xingpiaoliang&#39;s</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

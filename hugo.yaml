@@ -12,8 +12,26 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 
+frontMatter:
+  defaultConfig: yaml
+  override:
+    title: ""
+    date: ""
+    draft: false
+    tags: []
+    categories: []
+    author: "erasernoob"
+    description: "Default description"
+
 params:
+  showReadingTime: true  # 显示阅读时间
+  showWordCount: true    # 显示字数
   environment: "production"
+  ShowToc: true
+  # TocOpen: true
+  # TocPosition: "down"
+  customCSS:
+    - css/custom.css
 
   showShareButtons: true
   ShareButtons: ["github", "applemusic"] # To customize which share buttons to be enabled on page
@@ -21,7 +39,7 @@ params:
   profileMode:
     enabled: true
     title: "Piaoliang's Cabin" # optional default will be site title
-    subtitle: "A Totally Dreamer :)"
+    subtitle: "Totally a Dreamer :)"
     imageUrl: "/avtar.jpg"
     imageWidth: 120px # custom size
     imageHeight: 120px # custom size
@@ -61,6 +79,6 @@ menu:
       url: /tags/
       weight: 20
     - identifier: example
-      name: example.org
-      url: https://example.org
+      name: Github 
+      url: https://github.com/erasernoob
       weight: 30

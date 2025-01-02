@@ -2,31 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on xingpiaoliang&#39;s</title>
-    <link>https://erasernoob.github.io/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on xingpiaoliang&#39;s</description>
     <generator>Hugo -- 0.140.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 Dec 2024 09:53:14 +0800</lastBuildDate>
-    <atom:link href="https://erasernoob.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jan 2025 12:44:29 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>技术</title>
-      <link>https://erasernoob.github.io/categories/%E6%8A%80%E6%9C%AF/</link>
-      <pubDate>Tue, 31 Dec 2024 09:53:14 +0800</pubDate>
-      <guid>https://erasernoob.github.io/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <title>技术原理</title>
+      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 02 Jan 2025 12:44:29 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
     <item>
-      <title>Tech</title>
-      <link>https://erasernoob.github.io/categories/tech/</link>
-      <pubDate>Tue, 31 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://erasernoob.github.io/categories/tech/</guid>
+      <title>笔记</title>
+      <link>http://localhost:1313/categories/%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 02 Jan 2025 12:44:29 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技术</title>
+      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Tue, 31 Dec 2024 09:53:14 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
     <item>
       <title>技术笔记</title>
-      <link>https://erasernoob.github.io/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Tue, 03 Dec 2024 10:42:24 +0800</pubDate>
-      <guid>https://erasernoob.github.io/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</guid>
+      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sun, 15 Dec 2024 17:37:00 +0800</pubDate>
+      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
     </item>
   </channel>

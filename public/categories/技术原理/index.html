@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>技术原理 | xingpiaoliang&#39;s</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/erasernoob" title="Github">
+                    <span>Github</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    技术原理
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2025-01-02 12:44:29 +0800 CST'>January 2, 2025</span>&nbsp;·&nbsp;0 min&nbsp;·&nbsp;0 words</footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/frontmatter/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">初识springMVC三层架构
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>SpringMVC MVC理论基础 Web的三层架构：
+表示层：任何页面的返回和数据填充都是靠着表示层来完成的。post&amp;get 业务逻辑层：业务逻辑层主要用于数据处理，表示层向逻辑层索要数据，之后将数据添加到前端页面的上下文中。 数据访问层：底层的数据库的连接和数据的提取。 MVC详细解释：
+M:(Model)指的是业务模型，也就是我们在编写程序时为了封装数据传递所建立的实体类。 V: (View)指的是用户界面，前端界面。 C:(Controller)控制器对应的是Servlet的基本功能，处理请求，返回响应。doPost doGet MVC将三者之间进行解耦，最后将整个页面进行渲染一起打包给网页页面。
+@RequestMapping path属性，决定了当前方法处理的请求路径，并且路径必须要全局唯一。同时这个属性也可以是一个数组，即数组当中的所有路径都可以通过该方法进行处理。
+将路径前缀注解写在类的名上，则当前类下的所有方法处理的请求路径都要加上类的前缀。
+@Controller @RequestMapping(&#34;/yyds&#34;) public class MainController { @RequestMapping({&#34;/index&#34;, &#34;/test&#34;}) public ModelAndView index(){ return new ModelAndView(&#34;index&#34;); } } 路径也可以通过通配符进行匹配：
+“?&#34;：表示任意一个字符 “*&#34;：表示任意0-n个字符 “**&#34;：表示当前当前目录或者基于当前目录的多级目录 method属性，请求方法的类型，可以限定请求的方法，只能通过特定的方式来发送请求。效果和响应的PostMapping GetMapping相同。
+params属性，限定参数，必须要携带相对应的参数，否则无法访问。
+header属性用法与params一致，但是它要求的是请求头中需要携带什么内容，比如：
+@RequestMapping(value = &#34;/index&#34;, headers = &#34;!Connection&#34;) public ModelAndView index(){ return new ModelAndView(&#34;index&#34;); } 所以如果在这里携带了Connection属性，就无法访问了。
+@RequestParam 该注解则可以获取到请求中的参数。
+重定向和请求转发 只需要加前缀
+Bean的web作用域 和Spring中的Bean的作用域不同，不只有两种，在SpringMVC中的作用域继续被细分了。
+request：将类作用域修改为@RequestScope后，每一次不同的请求结束之后，相应的Bean也会消失，也就是说下一次得到的Bean创建出来的实例将会不同。 session：将类作用域修改为@SessionScope后，其每一次会话，结束之后Bean就会销毁消失。（会话指打开浏览器到关闭浏览器） Interceptor拦截器 拦截器和JavaWeb中的filter类似，但是：
+他的位置并不是处在Servlet之前，而是请求在通过Servlet之后所到达的控制器之前上。 他在DispathcherServlet将请求交给对应的Controller中的方法之前进行拦截处理。 不会拦截静态资源，只会拦截所有Controller中定义好了的请求映射对应的请求。 创建拦截器 ​ 创建拦截器需要实现HndlerInterceptor接口,实现方法：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-16 18:57:29 +0800 CST'>September 16, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;105 words</footer>
+  <a class="entry-link" aria-label="post link to 初识springMVC三层架构" href="http://localhost:1313/posts/springmvc/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">初识Spring
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Spring 背景：现代软件开发中，各个模块依赖程度太高，高耦合度带来的是很致命的问题，需要将各个模块进行解耦。IOC是Inversion of Control的缩写，”控制反转“。将复杂系统分解成相互合作的对象，**将接口的实现类交给容器，由容器给予我们相对应的实现类。**高内聚，低耦合。
+IOC容器基础 有一个Spring IOC容器实例化，组装管理的对象就称作为Bean。实际上就是编写配置文件，让IOC容器代理通过反射机制创建一个新的对象，而不是直接new出一个新的对象。需要注意的是，在配置文件中的每一个Bean都对应了一个单独的对象，当多次调用同一个name的Bean时，得到的都是同一个对象。默认为单例模式。
+可以通过修改成为从 （原型模式）。
+&lt;bean class=&#34;com.Student&#34; scope=&#34;prototype&#34;/&gt; 当bean的作用域为单例模式singleton时，是在容器一开始加载的时候对象就已经被创建了，之后取对象时只取得这一个，可以通过设置懒加载开启：取消一开始就加载创建对象。
+&lt;bean class=&#34;com.Student&#34; scope=&#34;prototype&#34; lazy-init=&#34;true&#34;/&gt; 同时，需要维护Bean的加载顺序，对象的创建顺序：
+&lt;bean class=&#34;com.Student&#34; scope=&#34;prototype&#34; depend-on=&#34;teacher&#34;/&gt; &lt;bean class=&#34;com.Teacher name=&#34;teacher&#34; scope=&#34;prototype&#34;/&gt; Core Container Spring框架中最核心的一个模块。
+依赖注入 当一个类内部需要依赖另一个类的创建时，Student中的Teacher成员变量，应将容器配置为在创建新的Student对象时，根据配置文件的需求，将需要的成员变量类注入到新的Student对象中。
+向bean对象中添加相应的属性（对应的就是成员变量对象）。要使用依赖注入，必须在该类中添加set成员变量方法
+&lt;bean class=&#34;com.Teacher name=&#34;teacher&#34; scope=&#34;prototype&#34;/&gt; &lt;bean class=&#34;com.Student&#34;/&gt; &lt;property name=&#34;teacher&#34; ref=&#34;artTeacher&#34;/&gt; // ref ： 对另外一个对象的引用 &lt;property name=&#34;sex&#34; value=“female&#34;&gt; // value成员变量为常量时 &lt;/bean&gt; 其实就是依靠容器，将具体实现类的信息全都交给配置文件，让容器动态的进行修改对象的各种属性,再对对象进行创建。
+bean在创建对象时，默认的调用无参构造方法，当修改了默认的无参数构造方法时，需要在配置文件中手动的进行定义。
+&lt;bean class=&#34;com.Student&#34;/&gt; &lt;constructor-arg name=&#34;teacher&#34; ref=&#34;artTeacher&#34;/&gt; // ref ： 对另外一个对象的引用 &lt;constructor-arg name=&#34;sex&#34; value=“female&#34;/&gt; // value成员变量为常量时 &lt;/bean&gt; 通过这样设置构造函数的选择，将依赖注入的时间调整到了在构造对象调用构造方法的时候。
+有时当name冲突时，需要特殊的具体的指定类型。
+&lt;bean class=&#34;com.Student&#34;/&gt; &lt;property name=&#34;teacher&#34; ref=&#34;artTeacher&#34;/&gt; &lt;property name=&#34;teacher&#34; value=“female&#34; type=&#34;String&#34;&gt; &lt;/bean&gt; 同时如果需要注入集合类型对象，也可以加入相对应的初始值。
+&lt;bean name=&#34;student&#34; class=&#34;org.spring.entity.Student&#34;&gt; &lt;property name=&#34;list&#34;&gt; &lt;list&gt; &lt;value&gt;1&lt;/value&gt; &lt;value&gt;2&lt;/value&gt; &lt;value&gt;3&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; 所以，一共有两种方式来对对象进行依赖注入：
+使用Set方法 使用对象的构造方法 自动装配 通过自动装配，让容器自动去寻找需要进行装配的值，省去了编写property的步骤。还是需要设定Setter方法。开启自动装配：
+&lt;bean class=&#34;com.Student&#34; autowire=&#34;byType&#34;/&gt; &lt;bean class=&#34;com.Teacher&#34;/&gt; 使用Byname属性。这里的name属性对应的是setter方法中的name。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-09-16 18:55:20 +0800 CST'>September 16, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;428 words</footer>
+  <a class="entry-link" aria-label="post link to 初识Spring" href="http://localhost:1313/posts/spring/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">xingpiaoliang&#39;s</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

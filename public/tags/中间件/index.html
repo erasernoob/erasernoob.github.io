@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>中间件 | xingpiaoliang&#39;s</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4abf966a537fba7e797e3e35c6ed13648ff68827b513a68a07860ab8484a387d.css" integrity="sha256-Sr&#43;WalN/un55fj41xu0TZI/2iCe1E6aKB4YKuEhKOH0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="xingpiaoliang&#39;s (Alt + H)">xingpiaoliang&#39;s</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/erasernoob" title="Github">
+                    <span>Github</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    中间件
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">初识ElasticSearch
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ElasticSearch 认识ElasticSearch 倒排索引 传统的数据库（MYSQL），采用的是正向索引，自上向下根据id对数据进行搜索。基于文档创建ID，根据Id查询，必须要先找到文档之后，最后判断是否包含目标词条。
+文档（document）： 每一条数据（记录），就是一个文档。 词条（term），将文档按照语义分成的词语。 将所有的文档分词，根据分得到的每个词条创建索引，记录词条所在的文档id。得到词条列表（包含文档id） 搜索过程 搜索“华为手机” -&gt; 分词 -&gt; “华为” &#43; “手机”。 在根据分得到的两个词条，查询词条列表搜索文档id。 根据文档id查询文档。 IK分词器 一共分为两种分词方式。
+ik_smart ik_max_word POST /_analyze { &#34;analyzer&#34;: &#34;ik_smart&#34;, &#34;text&#34;: &#34;让我们草着走，来吧孩子们！&#34; } 结果
+{ &#34;tokens&#34; : [ { &#34;token&#34; : &#34;让我们&#34;, &#34;start_offset&#34; : 0, &#34;end_offset&#34; : 3, &#34;type&#34; : &#34;CN_WORD&#34;, &#34;position&#34; : 0 }, { &#34;token&#34; : &#34;草&#34;, &#34;start_offset&#34; : 3, &#34;end_offset&#34; : 4, &#34;type&#34; : &#34;CN_CHAR&#34;, &#34;position&#34; : 1 }, { &#34;token&#34; : &#34;着&#34;, &#34;start_offset&#34; : 4, &#34;end_offset&#34; : 5, &#34;type&#34; : &#34;CN_CHAR&#34;, &#34;position&#34; : 2 }, { &#34;token&#34; : &#34;走&#34;, &#34;start_offset&#34; : 5, &#34;end_offset&#34; : 6, &#34;type&#34; : &#34;CN_CHAR&#34;, &#34;position&#34; : 3 }, { &#34;token&#34; : &#34;来吧&#34;, &#34;start_offset&#34; : 7, &#34;end_offset&#34; : 9, &#34;type&#34; : &#34;CN_WORD&#34;, &#34;position&#34; : 4 }, { &#34;token&#34; : &#34;孩子们&#34;, &#34;start_offset&#34; : 9, &#34;end_offset&#34; : 12, &#34;type&#34; : &#34;CN_WORD&#34;, &#34;position&#34; : 5 } ] } 同时IK分词器允许拓展词典增加自定义的词库。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-10 12:50:00 +0800 CST'>December 10, 2024</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1462 words</footer>
+  <a class="entry-link" aria-label="post link to 初识ElasticSearch" href="http://localhost:1313/posts/elasticsearch/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">MQ消息队列（未完结）
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Message Queue 同步调用 时效性强，等待到全部结果之后再返回。 拓展性差、性能下降、级联失败 异步调用 异步调用通常基于消息通知的方式，包含三个角色
+消息接收者 消息发送者 消息代理:管理、暂存、转发消息 优劣 偶合度低，拓展性强 无序等待，性能好 故障隔离 缓存消息、流量削峰填谷 不能立即得到调用结果，时效性差 业务安全依赖于broker的可靠性 架构 exchange 交换机 queue 消息队列 publisher consumer 数据隔离 使用虚拟主机（virtual host）以及用户的不同，实现数据隔离。
+Work Queues 多个消费者都被绑定到同一个队列中。默认的会将消息依次的轮询投递给每一个消费者。
+同一条消息只会被一个消费者处理 可以通过设置prefetch来控制消费者预取的消息数量，只有完成以后，才能继续取下一个消息。实现能者多劳。 Fanout交换机（广播） 将收到的消息，全部广播给与其关联的队列。
+Direct交换机 校验消息所带routeKey与每一个与交换机相连的队列的特定的bindingKey进行对照对比。
+Topic交换机 同样的基于RoutingKey做消息路由，但是routingKey时多个单词的集合，以.分割
+指定BindingKey时使用通配符
+#：代指0或多个单词 *：仅代指一个单词 声明队列和交换机 Exchange Queue Binding
+基于Bean的声明方式：再配置类中添加新的生成Bean
+Binding类作为绑定队列和交换机的绑定关系。 基于注解的声明方式
+@RabbitListener(bindings = @QeueBinding( value = @Queue(name = &#34;direct.queue1&#34;, durable=&#34;true&#34;), exchange = @Exchange(name= &#34;hmall.driect&#34;, type = ExchangeTypes.DIRECT), key = {&#34;red&#34;, &#34;blue&#34;} )) public void listenerDirectQueue(String msg) { System.out.println(&#34;接收到Direct消息：&#34; &#43; msg); } </p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-06 11:36:00 +0800 CST'>December 6, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;78 words</footer>
+  <a class="entry-link" aria-label="post link to MQ消息队列（未完结）" href="http://localhost:1313/posts/mq/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">xingpiaoliang&#39;s</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
