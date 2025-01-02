@@ -81,4 +81,4 @@ menu:
     - identifier: example
       name: Github 
       url: https://github.com/erasernoob
-      weight: 30
+      weight: 20
